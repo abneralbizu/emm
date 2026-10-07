@@ -140,17 +140,18 @@ address { font-style: normal; }
 
 /* ---------- network map */
 .netmap { margin: 0; }
-.netmap svg { display: block; width: 100%; height: auto; background: var(--navy); border-radius: 10px; }
+.netmap svg { display: block; width: 100%; height: auto; background: #CFE4E3; border: 1px solid var(--line); border-radius: 10px; }
 .netmap figcaption { font-size: var(--step--1); color: var(--muted); margin-top: 0.6rem; max-width: 30rem; }
-.netmap__land { fill: #1B4D48; }
-.netmap__state { fill: #22605A; stroke: #5C9A91; stroke-width: 0.7; stroke-dasharray: 2.5 2; stroke-linejoin: round; }
-.netmap__states text { font: 600 10.5px var(--sans); fill: #9CC0BA; letter-spacing: 0.06em; }
-.netmap__links path { fill: none; stroke: var(--brick-light); stroke-width: 1.7; stroke-linecap: round; opacity: 0.85; }
-.netmap__node circle { fill: #fff; stroke: var(--navy); stroke-width: 2; }
-.netmap__hq circle { fill: var(--brick-light); }
-.netmap__hq .netmap__ring { fill: none; stroke: var(--brick-light); stroke-width: 2; opacity: 0.5; }
-.netmap__labels text { font: 600 15px var(--sans); fill: #E3EDEA; }
-.netmap__labels .is-hq { fill: #E9C77F; font-weight: 700; }
+/* bright map: pale sea, white U.S. states, warm grey neighbors, spruce dots, gold lines */
+.netmap__land { fill: #ECEFE6; stroke: #C9D3CC; stroke-width: 0.6; }
+.netmap__state { fill: #FFFFFF; stroke: #9DBBB4; stroke-width: 0.7; stroke-dasharray: 2.5 2; stroke-linejoin: round; }
+.netmap__states text { font: 600 10.5px var(--sans); fill: #6A8C85; letter-spacing: 0.06em; }
+.netmap__links path { fill: none; stroke: var(--brick); stroke-width: 1.8; stroke-linecap: round; opacity: 0.8; }
+.netmap__node circle { fill: var(--navy); stroke: #fff; stroke-width: 2; }
+.netmap__hq circle { fill: #C9952F; stroke: #fff; stroke-width: 2; }
+.netmap__hq .netmap__ring { fill: none; stroke: #C9952F; stroke-width: 2; opacity: 0.55; }
+.netmap__labels text { font: 700 15px var(--sans); fill: var(--navy); paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; }
+.netmap__labels .is-hq { fill: var(--brick-dark); }
 
 @media (prefers-reduced-motion: no-preference) {
   .netmap__links path { stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw 1.1s cubic-bezier(.5,0,.2,1) forwards; }
