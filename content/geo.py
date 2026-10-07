@@ -1,7 +1,7 @@
 """Map projection shared by build.py (church dots, lines, labels) and tools/make_map.py (states, coastline).
 
 Albers equal-area conic, the projection used for most U.S. maps, fitted to a 620 x 560 box that
-covers Texas to New England and down to Puerto Rico. Change VIEW or the region, then run
+covers Texas to New England and down to the Florida Keys. Change VIEW or the region, then run
 python3 tools/make_map.py so the outlines and the dots stay aligned.
 """
 import math
@@ -9,7 +9,7 @@ import math
 VIEW = (620, 560)
 _LON0, _LAT0, _P1, _P2 = -84.0, 32.0, 24.0, 44.0
 # region shown: (west, south, east, north) in degrees, plus a margin in pixels
-REGION = (-100.5, 16.8, -63.5, 46.8)
+REGION = (-100.5, 23.8, -66.8, 47.2)
 PAD = 14
 
 _n = (math.sin(math.radians(_P1)) + math.sin(math.radians(_P2))) / 2

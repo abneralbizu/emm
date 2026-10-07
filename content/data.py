@@ -50,7 +50,6 @@ MAP_PLACES = [
     {"label": "Ocala, FL", "lonlat": (-82.14, 29.19), "count": 1},
     {"label": "Florida Central", "label_en": "Central Florida", "lonlat": (-80.75, 27.75), "count": 7},
     {"label": "Austin, TX", "lonlat": (-97.74, 30.27), "count": 1},
-    {"label": "Ceiba, Puerto Rico", "lonlat": (-65.65, 18.26), "count": 1},
 ]
 MAP_STATES = [  # state abbreviations drawn on the map (label position in lon, lat)
     ("NY", -75.4, 42.9), ("PA", -77.7, 40.9), ("OH", -82.7, 40.3), ("MI", -84.7, 43.5),
@@ -82,7 +81,6 @@ AFFILIATES = [
         ("Primera Iglesia de Philadelphia IEDJ", "6513 Bustleton Ave., Philadelphia, PA 19149"),
         ("Templo Manahaím IEDJ", "395 Marigold Ave., Kissimmee, FL 34749"),
         ("Iglesia Faro de Esperanza IEDJ", "P.O. Box 65298, Orange Park, FL 32065"),
-        ("IEDJ – Iglesia del Este Incorporado", "Ceiba, Puerto Rico"),
         ("IEDJ – Iglesia Fe y Esperanza", "Ocala, FL"),
      ]},
     {"group": {"es": "Iglesias M.I.", "en": "M.I. churches"},
