@@ -1,0 +1,162 @@
+"""Draw the state outlines and coastline for the home-page map into content/map_shapes.json.
+
+Run once (or after changing content/geo.py):
+    python3 tools/make_map.py <path to states-10m.json> <path to land-50m.json>
+
+The two files come from the npm packages us-atlas@3 and world-atlas@2
+(U.S. Census Bureau and Natural Earth data, both public domain):
+    npm pack us-atlas@3 world-atlas@2   then unpack the .tgz files.
+"""
+import json
+import math
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "content"))
+from geo import VIEW, project  # noqa: E402
+
+GEO_BOX = (-112, 8, -52, 56)        # only keep shapes that touch this area (degrees)
+CLIP = (-30, -30, VIEW[0] + 30, VIEW[1] + 30)
+TOL = 0.45                           # simplification tolerance in pixels
+
+
+def decode_arcs(topo):
+    sx, sy = topo["transform"]["scale"]
+    tx, ty = topo["transform"]["translate"]
+    arcs = []
+    for arc in topo["arcs"]:
+        x = y = 0
+        pts = []
+        for dx, dy in arc:
+            x += dx; y += dy
+            pts.append((x * sx + tx, y * sy + ty))
+        arcs.append(pts)
+    return arcs
+
+
+def ring(arcs, idxs):
+    out = []
+    for i in idxs:
+        pts = arcs[i] if i >= 0 else arcs[~i][::-1]
+        out.extend(pts if not out else pts[1:])
+    return out
+
+
+def polygons(arcs, geom):
+    if geom["type"] == "Polygon":
+        return [[ring(arcs, r) for r in geom["arcs"]]]
+    if geom["type"] == "MultiPolygon":
+        return [[ring(arcs, r) for r in poly] for poly in geom["arcs"]]
+    return []
+
+
+def in_box(r):
+    w, s, e, n = GEO_BOX
+    return any(w <= lon <= e and s <= lat <= n for lon, lat in r)
+
+
+def clip(poly, box):
+    """Sutherland-Hodgman clip of a ring to a rectangle."""
+    x0, y0, x1, y1 = box
+    def cut(pts, inside, inter):
+        out = []
+        for i, cur in enumerate(pts):
+            prev = pts[i - 1]
+            if inside(cur):
+                if not inside(prev):
+                    out.append(inter(prev, cur))
+                out.append(cur)
+            elif inside(prev):
+                out.append(inter(prev, cur))
+        return out
+    def ix(xc):
+        return lambda a, b: (xc, a[1] + (b[1] - a[1]) * (xc - a[0]) / (b[0] - a[0]))
+    def iy(yc):
+        return lambda a, b: (a[0] + (b[0] - a[0]) * (yc - a[1]) / (b[1] - a[1]), yc)
+    pts = poly
+    for inside, inter in ((lambda p: p[0] >= x0, ix(x0)), (lambda p: p[0] <= x1, ix(x1)),
+                          (lambda p: p[1] >= y0, iy(y0)), (lambda p: p[1] <= y1, iy(y1))):
+        if not pts:
+            break
+        pts = cut(pts, inside, inter)
+    return pts
+
+
+def simplify_ring(pts, tol):
+    """Closed ring: split at the point farthest from the start so both halves have distinct ends."""
+    if len(pts) > 1 and pts[0] == pts[-1]:
+        pts = pts[:-1]
+    if len(pts) < 4:
+        return pts
+    far = max(range(len(pts)), key=lambda i: math.hypot(pts[i][0] - pts[0][0], pts[i][1] - pts[0][1]))
+    a = simplify(pts[:far + 1], tol)
+    b = simplify(pts[far:] + [pts[0]], tol)
+    return a[:-1] + b[:-1]
+
+
+def simplify(pts, tol):
+    if len(pts) < 3:
+        return pts
+    def dp(a, b):
+        ax, ay = pts[a]; bx, by = pts[b]
+        dx, dy = bx - ax, by - ay
+        L = math.hypot(dx, dy) or 1e-9
+        best, idx = -1, None
+        for i in range(a + 1, b):
+            px, py = pts[i]
+            d = abs(dy * px - dx * py + bx * ay - by * ax) / L
+            if d > best:
+                best, idx = d, i
+        if best > tol:
+            return dp(a, idx)[:-1] + dp(idx, b)
+        return [pts[a], pts[b]]
+    sys.setrecursionlimit(100000)
+    return dp(0, len(pts) - 1)
+
+
+def area(pts):
+    return abs(sum(pts[i - 1][0] * p[1] - p[0] * pts[i - 1][1] for i, p in enumerate(pts))) / 2
+
+
+def to_path(rings):
+    parts = []
+    for r in rings:
+        if len(r) < 3:
+            continue
+        parts.append("M" + "L".join(f"{x:.1f} {y:.1f}".replace(".0 ", " ").replace(".0L", "L") for x, y in r) + "Z")
+    return "".join(parts)
+
+
+def shapes(topo, obj):
+    arcs = decode_arcs(topo)
+    out = []
+    for geom in topo["objects"][obj]["geometries"]:
+        rings = []
+        for poly in polygons(arcs, geom):
+            for r in poly:
+                if not in_box(r):
+                    continue
+                p = clip([project(lon, lat) for lon, lat in r], CLIP)
+                p = simplify_ring(p, TOL)
+                if len(p) >= 3 and area(p) > 1.5:
+                    rings.append([(round(x, 1), round(y, 1)) for x, y in p])
+        if rings:
+            out.append((geom.get("properties", {}).get("name", ""), rings))
+    return out
+
+
+def main(states_file, land_file):
+    states = json.loads(Path(states_file).read_text())
+    land = json.loads(Path(land_file).read_text())
+    land_rings = [r for _, rings in shapes(land, "land") for r in rings]
+    state_list = [{"name": name, "d": to_path(rings)} for name, rings in shapes(states, "states")]
+    data = {"note": "Generated by tools/make_map.py from us-atlas and world-atlas (public-domain Census and Natural Earth data).",
+            "land": to_path(land_rings), "states": state_list}
+    out = ROOT / "content" / "map_shapes.json"
+    out.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    print(f"{len(state_list)} states, {len(land_rings)} land shapes, {out.stat().st_size // 1024} KB -> {out}")
+
+
+if __name__ == "__main__":
+    main(*sys.argv[1:3])

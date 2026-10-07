@@ -64,16 +64,14 @@ def article_url(slug, lang):
 
 # ---------------------------------------------------------------- network map
 def network_map():
-    """Project the affiliated-church locations onto a simple map grid."""
-    lon0, lat0, k = -99.5, 45.5, 17.0
-
-    def proj(lon, lat):
-        return round((lon - lon0) * k, 1), round((lat0 - lat) * k * 1.18, 1)
-
-    hx, hy = proj(*data.HQ["lonlat"])
+    """Place the affiliated-church dots, the curved lines to the main office and the state labels
+    on the same map projection as the state outlines (content/geo.py, content/map_shapes.json)."""
+    from geo import project
+    shapes = json.loads((ROOT / "content" / "map_shapes.json").read_text(encoding="utf-8"))
+    hx, hy = project(*data.HQ["lonlat"])
     nodes = []
     for p in data.MAP_PLACES:
-        x, y = proj(*p["lonlat"])
+        x, y = project(*p["lonlat"])
         # curved line from HQ to the place
         mx, my = (hx + x) / 2, (hy + y) / 2
         dx, dy = x - hx, y - hy
@@ -84,8 +82,10 @@ def network_map():
                       "r": 4 + 2.2 * math.sqrt(p["count"]),
                       "path": f"M{hx},{hy} Q{cx:.1f},{cy:.1f} {x},{y}",
                       "len": round(dist * 1.15)})
-    grid = [(gx, gy) for gx in range(10, 620, 22) for gy in range(10, 560, 22)]
-    return {"hq": {"x": hx, "y": hy, **data.HQ}, "nodes": nodes, "grid": grid}
+    states = [{"code": code, "x": project(lon, lat)[0], "y": project(lon, lat)[1]}
+              for code, lon, lat in data.MAP_STATES]
+    return {"hq": {"x": hx, "y": hy, **data.HQ}, "nodes": nodes, "states": states,
+            "land": shapes["land"], "state_shapes": shapes["states"]}
 
 
 # ---------------------------------------------------------------- build

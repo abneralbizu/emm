@@ -3,13 +3,12 @@
   <svg viewBox="0 0 620 560" role="img" aria-labelledby="netmap-title netmap-desc">
     <title id="netmap-title">{{ 'Mapa de iglesias afiliadas' if lang == 'es' else 'Map of affiliated churches' }}</title>
     <desc id="netmap-desc">{% if lang == 'es' %}Líneas que conectan la oficina central en Winter Springs, Florida, con iglesias y ministerios afiliados en {% else %}Lines connecting the main office in Winter Springs, Florida, with affiliated churches and ministries in {% endif %}{% for n in netmap.nodes %}{{ (n.label_en if lang == 'en' and n.label_en else n.label) }}{{ ', ' if not loop.last else '.' }}{% endfor %}</desc>
-    <g class="netmap__grid" aria-hidden="true">
-      {% for gx, gy in netmap.grid %}<circle cx="{{ gx }}" cy="{{ gy }}" r="1.1"/>{% endfor %}
+    <g class="netmap__geo" aria-hidden="true">
+      <path class="netmap__land" d="{{ netmap.land }}"/>
+      {% for s in netmap.state_shapes %}<path class="netmap__state" d="{{ s.d }}"/>{% endfor %}
     </g>
     <g class="netmap__states" aria-hidden="true">
-      {% for code, lon, lat in data.MAP_STATES %}
-      <text x="{{ ((lon + 99.5) * 17.0)|round(1) }}" y="{{ ((45.5 - lat) * 17.0 * 1.18)|round(1) }}">{{ code }}</text>
-      {% endfor %}
+      {% for s in netmap.states %}<text x="{{ s.x }}" y="{{ s.y }}" text-anchor="middle">{{ s.code }}</text>{% endfor %}
     </g>
     <g class="netmap__links" aria-hidden="true">
       {% for n in netmap.nodes %}

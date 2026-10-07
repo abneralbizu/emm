@@ -142,8 +142,9 @@ address { font-style: normal; }
 .netmap { margin: 0; }
 .netmap svg { display: block; width: 100%; height: auto; background: var(--navy); border-radius: 10px; }
 .netmap figcaption { font-size: var(--step--1); color: var(--muted); margin-top: 0.6rem; max-width: 30rem; }
-.netmap__grid circle { fill: #2E5D58; }
-.netmap__states text { font: 700 13px var(--sans); fill: #7FA59F; letter-spacing: 0.08em; }
+.netmap__land { fill: #1B4D48; }
+.netmap__state { fill: #22605A; stroke: #5C9A91; stroke-width: 0.7; stroke-dasharray: 2.5 2; stroke-linejoin: round; }
+.netmap__states text { font: 600 10.5px var(--sans); fill: #9CC0BA; letter-spacing: 0.06em; }
 .netmap__links path { fill: none; stroke: var(--brick-light); stroke-width: 1.7; stroke-linecap: round; opacity: 0.85; }
 .netmap__node circle { fill: #fff; stroke: var(--navy); stroke-width: 2; }
 .netmap__hq circle { fill: var(--brick-light); }
