@@ -87,6 +87,8 @@
         <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a><br>
         <a href="mailto:{{ data.ORG.email }}">{{ data.ORG.email }}</a>
       </address>
+      <p class="footer__ny">{{ 'Nueva York' if lang == 'es' else 'New York' }}<br>
+        <span>{{ data.ORG.address_ny[0] }}<br>{{ data.ORG.address_ny[1] }}</span></p>
     </div>
   </div>
   <p class="footer__copy">© {{ year }} {{ org_name }} (EMM)</p>

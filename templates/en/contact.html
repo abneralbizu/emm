@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m %}
 {% block title %}Contact{% endblock %}
-{% block description %}Contact the EMM main office in Winter Park, Florida.{% endblock %}
+{% block description %}Contact the EMM main office in Winter Springs, Florida.{% endblock %}
 {% block main %}
 {{ m.page_head("Contact us", "For information about our services, membership or credentials, send us a message or call the main office.") }}
 <div class="content">
@@ -38,6 +38,8 @@
         Fax {{ data.ORG.fax }}<br>
         <a href="mailto:{{ data.ORG.email }}">{{ data.ORG.email }}</a>
       </address>
+      <h2 class="aside__h2">New York office</h2>
+      <address>{{ data.ORG.address_ny[0] }}<br>{{ data.ORG.address_ny[1] }}</address>
       <ul class="people">
         {% for p in data.LEADERS %}
         <li><strong>{{ p.name }}</strong>{{ p.role[lang] }}<br><a href="mailto:{{ p.email }}">{{ p.email }}</a></li>

@@ -15,7 +15,7 @@
       <p>Administra mi Iglesia es la división de EMM que ofrece servicios administrativos a iglesias locales, denominaciones y organizaciones religiosas: contabilidad, nómina, impuestos, auditorías, seguros y más. <a href="{{ url('churches', lang) }}">Ver todos los servicios</a>.</p>
 
       <h2>Una red de iglesias</h2>
-      <p>Aunque tenemos personal en distintos puntos de los Estados Unidos, nuestra oficina central está en Winter Park, Florida. Las iglesias y ministerios afiliados se encuentran en Connecticut, Nueva York, Nueva Jersey, Pensilvania, Florida, Texas y Puerto Rico. <a href="{{ url('affiliates', lang) }}">Ver las organizaciones afiliadas</a>.</p>
+      <p>Aunque tenemos personal en distintos puntos de los Estados Unidos, nuestra oficina central está en Winter Springs, Florida. Las iglesias y ministerios afiliados se encuentran en Connecticut, Nueva York, Nueva Jersey, Pensilvania, Florida, Texas y Puerto Rico. <a href="{{ url('affiliates', lang) }}">Ver las organizaciones afiliadas</a>.</p>
 
       <h2>Liderazgo</h2>
       <ul class="people">
@@ -31,6 +31,8 @@
         Tel. <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a><br>
         Fax {{ data.ORG.fax }}
       </address>
+      <h2 class="aside__h2">Oficina de Nueva York</h2>
+      <address>{{ data.ORG.address_ny[0] }}<br>{{ data.ORG.address_ny[1] }}</address>
       <a class="btn" href="{{ url('contact', lang) }}">Comunicarse</a>
     </aside>
   </div>

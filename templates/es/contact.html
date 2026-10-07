@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m %}
 {% block title %}Contacto{% endblock %}
-{% block description %}Comuníquese con la oficina central de EMM en Winter Park, Florida.{% endblock %}
+{% block description %}Comuníquese con la oficina central de EMM en Winter Springs, Florida.{% endblock %}
 {% block main %}
 {{ m.page_head("Comuníquese con nosotros", "Para información sobre nuestros servicios, la membresía o las credenciales, escríbanos o llame a la oficina central.") }}
 <div class="content">
@@ -38,6 +38,8 @@
         Fax {{ data.ORG.fax }}<br>
         <a href="mailto:{{ data.ORG.email }}">{{ data.ORG.email }}</a>
       </address>
+      <h2 class="aside__h2">Oficina de Nueva York</h2>
+      <address>{{ data.ORG.address_ny[0] }}<br>{{ data.ORG.address_ny[1] }}</address>
       <ul class="people">
         {% for p in data.LEADERS %}
         <li><strong>{{ p.name }}</strong>{{ p.role[lang] }}<br><a href="mailto:{{ p.email }}">{{ p.email }}</a></li>

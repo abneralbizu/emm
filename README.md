@@ -111,7 +111,7 @@ has no built-in form handling; you would need to connect the forms to a service 
 
 These came from the 2021 version of the old NCCMN site and may be out of date:
 
-* Office address, phone (407-759-9003) and fax (321-445-9900) – `ORG` in `content/data.py`
+* Phone (407-759-9003) and fax (321-445-9900) – `ORG` in `content/data.py` (the Winter Springs and New York addresses were confirmed in October 2026)
 * Public email `info@nccmn.org` and `apply@nccmn.org` actually receive mail
 * Leaders and their emails – `LEADERS`
 * The online donation link (`https://go.payinvoice.com/nccmn/`, from the old “Blessings” page)

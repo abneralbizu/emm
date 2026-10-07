@@ -2,7 +2,7 @@
 <figure class="netmap">
   <svg viewBox="0 0 620 560" role="img" aria-labelledby="netmap-title netmap-desc">
     <title id="netmap-title">{{ 'Mapa de iglesias afiliadas' if lang == 'es' else 'Map of affiliated churches' }}</title>
-    <desc id="netmap-desc">{% if lang == 'es' %}Líneas que conectan la oficina central en Winter Park, Florida, con iglesias y ministerios afiliados en {% else %}Lines connecting the main office in Winter Park, Florida, with affiliated churches and ministries in {% endif %}{% for n in netmap.nodes %}{{ (n.label_en if lang == 'en' and n.label_en else n.label) }}{{ ', ' if not loop.last else '.' }}{% endfor %}</desc>
+    <desc id="netmap-desc">{% if lang == 'es' %}Líneas que conectan la oficina central en Winter Springs, Florida, con iglesias y ministerios afiliados en {% else %}Lines connecting the main office in Winter Springs, Florida, with affiliated churches and ministries in {% endif %}{% for n in netmap.nodes %}{{ (n.label_en if lang == 'en' and n.label_en else n.label) }}{{ ', ' if not loop.last else '.' }}{% endfor %}</desc>
     <g class="netmap__grid" aria-hidden="true">
       {% for gx, gy in netmap.grid %}<circle cx="{{ gx }}" cy="{{ gy }}" r="1.1"/>{% endfor %}
     </g>
@@ -29,7 +29,7 @@
       </g>
     </g>
     <g class="netmap__labels" aria-hidden="true">
-      <text x="{{ netmap.hq.x - 24 }}" y="{{ netmap.hq.y + 5 }}" text-anchor="end" class="is-hq">Winter Park</text>
+      <text x="{{ netmap.hq.x - 24 }}" y="{{ netmap.hq.y + 5 }}" text-anchor="end" class="is-hq">Winter Springs</text>
       {% set nyc = netmap.nodes[3] %}
       <text x="{{ nyc.x + 16 }}" y="{{ nyc.y + 20 }}">{{ 'Nueva York' if lang == 'es' else 'New York' }}</text>
       {% set tx = netmap.nodes[9] %}
@@ -40,5 +40,5 @@
       <text x="{{ roc.x }}" y="{{ roc.y - 12 }}" text-anchor="middle">Rochester</text>
     </g>
   </svg>
-  <figcaption>{% if lang == 'es' %}Iglesias y ministerios afiliados, conectados con nuestra oficina en Winter Park, Florida.{% else %}Affiliated churches and ministries, connected to our office in Winter Park, Florida.{% endif %}</figcaption>
+  <figcaption>{% if lang == 'es' %}Iglesias y ministerios afiliados, conectados con nuestra oficina en Winter Springs, Florida.{% else %}Affiliated churches and ministries, connected to our office in Winter Springs, Florida.{% endif %}</figcaption>
 </figure>
