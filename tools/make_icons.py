@@ -17,7 +17,7 @@ IMG = ROOT / "static" / "img"
 FONTS = ROOT / "static" / "fonts"
 SPRUCE, GOLD, GOLD_LIGHT = "#14403C", "#B8862B", "#D9A846"
 NAMES = {"en": ("Excellence Ministry", "Management"),
-         "es": ("Excelencia en", "Administración Ministerial")}
+         "es": ("Excelencia en la", "Administración del Ministerio")}
 
 
 def font(name):
@@ -103,7 +103,7 @@ async def main():
             <div style="width:300px;flex:none;line-height:0">{MARK}</div>
             <div><div style="font:600 46px/1.12 L;color:{SPRUCE};margin:0 0 22px">Donde la administración está al servicio de la misión</div>
             <div class="rule"></div>
-            <div style="font:600 25px/1.35 F;color:#4A5A57">Excellence Ministry Management<br>Excelencia en Administración Ministerial</div></div></div>"""
+            <div style="font:600 25px/1.35 F;color:#4A5A57">Excellence Ministry Management<br>Excelencia en la Administración del Ministerio</div></div></div>"""
         await shot(og, IMG / "og.png", scale=1, sel=".og", viewport={"width": 1200, "height": 630})
         await b.close()
 

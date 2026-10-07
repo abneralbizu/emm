@@ -8,7 +8,7 @@ from pathlib import Path
 
 # ------------------------------------------------------------------ contact
 ORG = {
-    "name_es": "Excelencia en Administración Ministerial",
+    "name_es": "Excelencia en la Administración del Ministerio",
     "name_en": "Excellence Ministry Management",
     "short": "EMM",
     # former name, shown on the About page and home page so returning churches recognize us

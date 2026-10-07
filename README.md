@@ -1,7 +1,7 @@
 # EMM website
 
 A bilingual (Spanish first, English second) static website for
-Excelencia en Administración Ministerial / Excellence Ministry Management (EMM),
+Excelencia en la Administración del Ministerio / Excellence Ministry Management (EMM),
 formerly the Red Nacional de Iglesias y Ministerios Cristianos / National Christian Churches & Ministries Network (NCCMN).
 
 It is built from the same code as the new NCCMN site, which replaced an old WordPress site that had
