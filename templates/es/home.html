@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Excelencia en Administración Ministerial{% endblock %}
+{% block description %}Contabilidad, exención contributiva 501(c)(3), credenciales ministeriales y plan de retiro para iglesias independientes y sus ministros.{% endblock %}
+{% block main %}
+<section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__text">
+      <h1 class="hero__title">Donde la administración está al servicio de la misión</h1>
+      <p class="hero__lead">Excelencia en Administración Ministerial (EMM), antes NCCMN, se encarga de la contabilidad, la exención contributiva, las credenciales y el retiro de iglesias independientes, para que pastores y líderes puedan dedicarse a su llamado.</p>
+      <div class="hero__actions">
+        <a class="btn" href="{{ url('join', lang) }}">Unir mi iglesia a EMM</a>
+        <a class="btn btn--ghost" href="{{ url('churches', lang) }}">Ver los servicios</a>
+      </div>
+    </div>
+    {% include "partials/netmap.html" %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section__title">Le servimos en dos frentes</h2>
+    <div class="split">
+      <div class="split__col">
+        <h3>A su iglesia</h3>
+        <p>Llevamos la parte administrativa que exige el gobierno, la banca y la industria.</p>
+        <ul class="ticks">
+          <li>Contabilidad, nómina e impuestos</li>
+          <li>Revisiones financieras y auditorías independientes</li>
+          <li>Pólizas de seguro de propiedad y responsabilidad</li>
+          <li>Reglamentos, bienes raíces y proyectos de construcción</li>
+        </ul>
+        <a class="textlink" href="{{ url('churches', lang) }}">Servicios para iglesias</a>
+      </div>
+      <div class="split__col">
+        <h3>A quien ministra</h3>
+        <p>Acompañamos a pastores y líderes en lo que su vocación requiere ante la ley.</p>
+        <ul class="ticks">
+          <li>Credenciales ministeriales reconocidas</li>
+          <li>Plan de retiro 403(b) para el clero</li>
+          <li>Plan médico y seguros de responsabilidad profesional</li>
+          <li>Asesoría para negociar el sostenimiento pastoral</li>
+        </ul>
+        <a class="textlink" href="{{ url('ministers', lang) }}">Servicios para ministros</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--mist">
+  <div class="wrap">
+    <h2 class="section__title">Lo que recibe su iglesia al unirse</h2>
+    <dl class="benefits">
+      <div class="benefit">
+        <dt>Exención contributiva 501(c)(3)</dt>
+        <dd>EMM es una organización matriz ante el IRS. Su iglesia queda cubierta y sus donantes pueden deducir diezmos y ofrendas.</dd>
+        <dd><a class="textlink" href="{{ url('exemption', lang) }}">Cómo funciona la cobertura</a></dd>
+      </div>
+      <div class="benefit">
+        <dt>Credenciales para cuatro ministros</dt>
+        <dd>Dos ministros ordenados y dos comisionados o licenciados por congregación, más verificación de antecedentes para voluntarios clave.</dd>
+      </div>
+      <div class="benefit">
+        <dt>Plan de retiro para el clero</dt>
+        <dd>Acceso al Plan de Retiro y Jubilación 403(b) de EMM, y tarifas especiales en seguros, planificación patrimonial y contabilidad.</dd>
+        <dd><a class="textlink" href="{{ url('retirement', lang) }}">Conozca el plan</a></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap steps-wrap">
+    <h2 class="section__title">Cómo unirse</h2>
+    <ol class="steps">
+      <li><h3>Descargue la solicitud</h3><p><a href="{{ data.DOCS.membership_app }}" download>Solicitud de membresía</a> (PDF, 7 págs.).</p></li>
+      <li><h3>Envíela por correo electrónico</h3><p>Mándela completa a <a href="mailto:{{ data.ORG.apply_email }}">{{ data.ORG.apply_email }}</a>.</p></li>
+      <li><h3>Converse con nosotros</h3><p>Recibirá la constitución y el reglamento de EMM para revisarlos antes de una entrevista telefónica.</p></li>
+      <li><h3>Reciba sus credenciales</h3><p>Al ser aceptada, su iglesia queda bajo la cobertura de EMM y sus ministros reciben sus credenciales.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--mist">
+  <div class="wrap">
+    <h2 class="section__title">Formación para el liderazgo</h2>
+    <div class="trio">
+      <a class="trio__item" href="{{ url('training', lang) }}">
+        <h3>Videoteca de formación ministerial</h3>
+        <p>{{ data.video_count() }} charlas sobre predicación, liderazgo, educación cristiana y vida congregacional, en su mayoría por el Rev. Dr. Pablo A. Jiménez.</p>
+      </a>
+      <a class="trio__item" href="{{ url('resources', lang) }}">
+        <h3>Documentos para su iglesia</h3>
+        <p>Modelos de reglamento, cartas constitutivas, guías de conflicto y materiales del programa CRECE.</p>
+      </a>
+      {% set latest = articles[0] %}
+      <a class="trio__item" href="{{ url('reflections', lang) }}">
+        <h3>Reflexiones</h3>
+        <p>Devocionales y artículos, como la serie de siete días «Del afán a la esperanza» sobre el Padre Nuestro.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+{{ m.contact_band(lang, data, url) }}
+{% endblock %}

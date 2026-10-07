@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Únase a EMM{% endblock %}
+{% block description %}Beneficios de membresía en EMM y cómo solicitar la admisión de su iglesia u organización.{% endblock %}
+{% block main %}
+{{ m.page_head("Únase a EMM", "Iglesias, ministerios e iglesias en formación pueden ser miembros de Excelencia en Administración Ministerial (EMM).") }}
+<div class="content">
+  <div class="wrap layout">
+    <div>
+      <h2 class="section__title">Beneficios de la membresía</h2>
+      <dl class="service-list">
+        <div class="service"><dt>Exención contributiva</dt><dd>Cobertura de las actividades financieras de su iglesia bajo la sección 501(c)(3), para que los donativos sean deducibles. <a href="{{ url('exemption', lang) }}">Más información</a>.</dd></div>
+        <div class="service"><dt>Plan de retiro</dt><dd>Sus ministros pueden participar en el Plan de Retiro y Jubilación 403(b) para el clero. <a href="{{ url('retirement', lang) }}">Más información</a>.</dd></div>
+        <div class="service"><dt>Credenciales</dt><dd>Credenciales para dos ministros ordenados y dos comisionados o licenciados por congregación.</dd></div>
+        <div class="service"><dt>Verificación de antecedentes</dt><dd>Para quienes sirven como voluntarios en ministerios importantes, como el ministerio con la niñez.</dd></div>
+      </dl>
+
+      <h2 class="section__title">Tarifas especiales en</h2>
+      <ul class="ticks">
+        <li>Seguro de salud grupal, de propiedad, de accidentes y de discapacidad</li>
+        <li>Planes de retiro y jubilación</li>
+        <li>Seminarios de planificación patrimonial y fideicomisos en vida</li>
+        <li>Asesoría y servicios de impuestos institucionales, inmobiliarios y patrimoniales</li>
+        <li>Contabilidad y auditorías por organizaciones independientes</li>
+      </ul>
+
+      <h2 class="section__title">El proceso de admisión</h2>
+      <ol class="steps steps--stack">
+        <li><h3>Descargue la solicitud</h3><p>Indique la categoría: membresía regular para iglesias y ministerios, membresía de grupo para iglesias afiliadas, o iglesia en formación.</p></li>
+        <li><h3>Envíela completa</h3><p>Por correo electrónico a <a href="mailto:{{ data.ORG.apply_email }}">{{ data.ORG.apply_email }}</a>. Las solicitudes incompletas no se pueden procesar.</p></li>
+        <li><h3>Revise nuestros documentos</h3><p>Le enviaremos la constitución y el reglamento de EMM antes de una entrevista telefónica. Cada solicitud se considera con cuidado y en oración.</p></li>
+        <li><h3>Bienvenida a EMM</h3><p>Al ser aceptada, su iglesia recibe la cobertura, las credenciales y el directorio de EMM.</p></li>
+      </ol>
+    </div>
+    <aside class="aside">
+      <h2>Solicitud de membresía</h2>
+      <p>PDF de 7 páginas, en inglés. Si prefiere ayuda en español para llenarla, llámenos al <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a>.</p>
+      <a class="btn" href="{{ data.DOCS.membership_app }}" download>Descargar la solicitud</a>
+      <p class="note">¿Tiene preguntas antes de aplicar? <a href="{{ url('contact', lang) }}">Escríbanos</a>.</p>
+    </aside>
+  </div>
+</div>
+{% endblock %}

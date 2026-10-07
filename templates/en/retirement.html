@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Clergy Retirement Plan 403(b){% endblock %}
+{% block description %}The 403(b) Clergy Retirement Plan for ministers serving churches and ministries related to EMM.{% endblock %}
+{% block main %}
+{{ m.page_head("Clergy Retirement Plan 403(b)", "Ministers serving in churches and ministries affiliated with EMM can take part in EMM's 403(b) Clergy Retirement Plan.") }}
+{{ m.services_nav(page, lang, data.UI[lang], url) }}
+<div class="content">
+  <div class="wrap layout">
+    <div class="prose">
+      <h2>How the plan is governed</h2>
+      <p>The plan is governed by a legal document containing every provision the Internal Revenue Service requires of the church or ministry that adopts and administers it. That document follows the federal laws and regulations that apply to retirement plans.</p>
+      <p>The plan document can change as new federal laws and regulations take effect, and your church or ministry may adjust certain provisions according to its finances. When changes happen, we will notify every participant of any change that affects their rights or responsibilities.</p>
+
+      <h2>What the plan description covers</h2>
+      <ul>
+        <li>Who is eligible to make elective deferrals and receive employer contributions</li>
+        <li>How to start, change or stop deferrals from your pay</li>
+        <li>Annual contribution limits</li>
+        <li>How and when benefits can be received</li>
+      </ul>
+    </div>
+    <aside class="aside">
+      <h2>Plan description</h2>
+      <p>National Christian Churches &amp; Ministries Network Clergy Retirement Plan, effective January 1, 2019. 9 pages. The plan keeps its original legal name.</p>
+      <a class="btn" href="{{ data.DOCS.spd }}" download>Download (PDF)</a>
+      <p class="note">To enroll or ask about your account, <a href="{{ url('contact', lang) }}">contact us</a>.</p>
+    </aside>
+  </div>
+</div>
+{{ m.contact_band(lang, data, url) }}
+{% endblock %}

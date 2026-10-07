@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Reflections{% endblock %}
+{% block description %}Devotionals and articles by EMM leaders on prayer, preaching and the Christian life.{% endblock %}
+{% block main %}
+{{ m.page_head("Reflections", "Devotionals and articles by EMM leaders on prayer, preaching and the Christian life.") }}
+<div class="content">
+  <div class="wrap prose-wrap">
+    {% include "partials/reflections_list.html" %}
+  </div>
+</div>
+{% endblock %}

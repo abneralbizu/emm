@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Donar{% endblock %}
+{% block description %}Apoye a Excelencia en Administración Ministerial. Los donativos son deducibles de impuestos según la ley.{% endblock %}
+{% block main %}
+{{ m.page_head("Apoye a EMM", "Su donativo ayuda a fortalecer los ministerios con buenas prácticas financieras.") }}
+<div class="content">
+  <div class="wrap layout">
+    <div class="prose">
+      <p>Algunas iglesias son pequeñas y no pueden cubrir los gastos de viaje. Su donativo nos permite llegar a ellas por teleconferencia o en persona, con talleres, asesoría y acompañamiento.</p>
+      <h2>Donar en línea</h2>
+      <p>Procesamos los donativos en línea por medio de un servicio de pagos seguro. Al oprimir el botón saldrá de este sitio para completar su donativo.</p>
+      <p><a class="btn" href="{{ data.ORG.give_url }}" rel="noopener">Donar en línea</a></p>
+      <h2>Donar por cheque</h2>
+      <p>Haga su cheque a nombre de <strong>{{ data.ORG.legal_name }}</strong> y envíelo a:</p>
+      <address>{{ data.ORG.address[0] }}<br>{{ data.ORG.address[1] }}</address>
+      <p class="note">EMM es una organización sin fines de lucro exenta bajo la sección 501(c)(3). Los donativos son deducibles de impuestos según lo permita la ley. Le enviaremos un recibo para su declaración.</p>
+    </div>
+    <aside class="aside">
+      <h2>Preguntas sobre su donativo</h2>
+      <p>Para recibos, donativos recurrentes u ofrendas de su iglesia, llame al <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a> o <a href="{{ url('contact', lang) }}">escríbanos</a>.</p>
+    </aside>
+  </div>
+</div>
+{% endblock %}

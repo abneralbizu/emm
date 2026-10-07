@@ -1,0 +1,7 @@
+# Netlify settings. The site is pre-built: Netlify only publishes the ./site folder.
+[build]
+  publish = "site"
+  command = "pip install jinja2 && python3 build.py"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"

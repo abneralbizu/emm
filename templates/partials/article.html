@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% set T = data.UI[lang] %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block description %}{{ article.body|striptags|truncate(155, True, '…') }}{% endblock %}
+{% block main %}
+<article class="article">
+  <div class="wrap">
+    <header class="article__head">
+      <p class="article__meta"><a href="{{ url('reflections', lang) }}">{{ T.all_reflections }}</a></p>
+      {% if article.series %}<p class="article__meta">{{ data.SERIES[article.series][lang] }}</p>{% endif %}
+      <h1 lang="{{ article.lang }}">{{ article.title }}</h1>
+      <p class="article__meta">{{ T.by }} {{ article.author }}, {{ data.fmt_date(article.date, lang) }}</p>
+      {% if article.lang != lang and T.article_lang_note %}<p class="note">{{ T.article_lang_note }}</p>{% endif %}
+    </header>
+    <div class="article__body" lang="{{ article.lang }}">
+      {{ article.body|safe }}
+    </div>
+    <nav class="article__nav" aria-label="{{ T.prev }} / {{ T.next }}">
+      {% if article.prev %}<a class="prev" href="{{ article_url(article.prev.slug, lang) }}"><small>{{ T.prev }}</small><span lang="{{ article.prev.lang }}">{{ article.prev.title }}</span></a>{% endif %}
+      {% if article.next %}<a class="next" href="{{ article_url(article.next.slug, lang) }}"><small>{{ T.next }}</small><span lang="{{ article.next.lang }}">{{ article.next.title }}</span></a>{% endif %}
+    </nav>
+  </div>
+</article>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}501(c)(3) tax exemption{% endblock %}
+{% block description %}Your church can be covered under section 501(c)(3) through EMM, so your members' gifts are tax-deductible.{% endblock %}
+{% block main %}
+{{ m.page_head("501(c)(3) tax exemption", "For your members to deduct their tithes, offerings and gifts, your church needs to be covered under section 501(c)(3) of the Internal Revenue Code.") }}
+{{ m.services_nav(page, lang, data.UI[lang], url) }}
+<div class="content">
+  <div class="wrap layout">
+    <div class="prose">
+      <h2>Why it matters</h2>
+      <p>Only churches and religious institutions covered under section 501(c)(3) can assure their donors that gifts will be deductible on their U.S. tax returns.</p>
+      <p>If your church is not covered, your donors may <strong>not</strong> qualify for the deduction. Claiming an improper deduction can also trigger an IRS audit of the church or ministry.</p>
+      <div class="callout">
+        <p>Churches and ministries that are not properly recognized as exempt can face administrative and even criminal charges, with fines that can be significant for each improper claim.</p>
+      </div>
+
+      <h2>How EMM helps</h2>
+      <p>EMM is a parent (master 501(c)(3)) organization recognized by the Internal Revenue Service. When you join EMM, your church or ministry comes under that coverage, so your church's financial activity and the gifts it receives are covered by the exemption.</p>
+      <p>As part of membership we also help you keep the internal controls and records the exemption requires.</p>
+
+      <h2>Getting started</h2>
+      <p>Download the <a href="{{ data.DOCS.membership_app }}" download>membership application</a> (PDF), complete it and email it to <a href="mailto:{{ data.ORG.apply_email }}">{{ data.ORG.apply_email }}</a>. We will call to talk about your church before completing admission.</p>
+      <p class="note">This page is for information only and is not legal or tax advice. Your situation may call for guidance from a professional.</p>
+    </div>
+    <aside class="aside">
+      <h2>Included with membership</h2>
+      <p>501(c)(3) coverage is part of every member church's benefits, together with credentials and access to the retirement plan.</p>
+      <a class="btn" href="{{ url('join', lang) }}">See the benefits</a>
+    </aside>
+  </div>
+</div>
+{{ m.contact_band(lang, data, url) }}
+{% endblock %}

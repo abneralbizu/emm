@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Resources{% endblock %}
+{% block description %}Sample documents, CRECE program materials, the Film Forum and useful links for churches and leaders.{% endblock %}
+{% block main %}
+{{ m.page_head("Resources for your church", "Documents and materials you can download and adapt for your congregation. They are free for every church.") }}
+<div class="content">
+  <div class="wrap">
+    <ul class="toc">
+      <li><a href="#documents">Administrative documents</a></li>
+      <li><a href="#crece">CRECE program</a></li>
+      <li><a href="#film-forum">Film Forum</a></li>
+      <li><a href="#links">Links</a></li>
+    </ul>
+
+    <section class="collection" id="documents">
+      <div class="collection__head"><h2>Administrative documents</h2></div>
+      {{ m.doc_list(data.ADMIN_DOCS, lang, data.UI[lang]) }}
+    </section>
+
+    <section class="collection" id="crece">
+      <div class="collection__head">
+        <h2>CRECE program</h2>
+        <p>Growth workshops for churches and leaders, prepared in 2016 and 2017 for the Iglesia Evangélica Discípulos de Jesucristo: leadership, boards, stewardship, evangelism and a seven-week preaching plan. Materials are in Spanish.</p>
+      </div>
+      {{ m.doc_list(data.CRECE_DOCS, lang, data.UI[lang]) }}
+    </section>
+
+    <section class="collection" id="film-forum">
+      <div class="collection__head">
+        <h2>Film Forum (Cine Foro)</h2>
+        <p>A film forum is a group that discusses what movies show us, in the light of Scripture. The group watches a film on a Friday or Saturday night while a leader pauses at key scenes, takes home readings for the week, then meets again to talk through an interactive presentation. Sessions are in Spanish.</p>
+      </div>
+      <ul class="affiliates">
+        {% for f in data.CINE_FORO %}
+        <li><strong>The implicit theology of “{{ f.film }}”</strong><span>{{ f.q[lang] }}</span></li>
+        {% endfor %}
+      </ul>
+      <p>Would you like to use these presentations at your church? <a href="{{ url('contact', lang) }}">Ask for them here</a> and we will send them.</p>
+    </section>
+
+    <section class="collection" id="links">
+      <div class="collection__head"><h2>Links</h2></div>
+      <ul class="docs">
+        {% for l in data.LINKS %}
+        <li class="doc"><a href="{{ l.href }}" rel="noopener">{{ l.name }}</a><p class="doc__desc">{{ l.desc[lang] }}</p></li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+</div>
+{% endblock %}

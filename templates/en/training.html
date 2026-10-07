@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Ministry training{% endblock %}
+{% block description %}A ministry training library: preaching, leadership, Christian education, theology and congregational life.{% endblock %}
+{% block main %}
+{{ m.page_head("Ministry training", "A library of " ~ data.video_count() ~ " talks for developing leaders and the gifts of our congregations, mostly by Rev. Dr. Pablo A. Jiménez. Most talks are in Spanish; the church revitalization series is in English. Videos open on YouTube or Vimeo.") }}
+<div class="content">
+  <div class="wrap">
+    {% include "partials/videos.html" %}
+    <p class="note">For formal theological education, see <a href="https://rededucativagenesaret.com" rel="noopener">Red Educativa Genesaret</a> and <a href="{{ url('resources', lang) }}#links">Gordon-Conwell's Hispanic Ministries Program</a>.</p>
+  </div>
+</div>
+{% endblock %}

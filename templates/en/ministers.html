@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Services for ministers{% endblock %}
+{% block description %}Ministerial credentials, pastoral compensation, health plans, a 403(b) retirement plan and liability insurance for pastors and religious leaders.{% endblock %}
+{% block main %}
+{{ m.page_head("Services for ministers", "For those serving in pastoral ministry or leading nonprofit religious institutions.") }}
+{{ m.services_nav(page, lang, data.UI[lang], url) }}
+<div class="content">
+  <div class="wrap layout">
+    <div>
+      <dl class="service-list">
+        <div class="service"><dt>Credentials</dt><dd>Through EMM you can obtain ministerial credentials that recognize you as a religious leader before government and industry. Credentials are also required for certain tax benefits available to ministers.</dd></div>
+        <div class="service"><dt>Pastoral compensation</dt><dd>We advise you as you negotiate your compensation, so you receive a fair income that fits your ministerial role.</dd></div>
+        <div class="service"><dt>Health plans</dt><dd>We help you arrange health coverage for yourself, your family or a group from your local church, plus quotes for life, disability and long-term care insurance.</dd></div>
+        <div class="service"><dt>Retirement</dt><dd>You can take part in EMM's 403(b) Clergy Retirement Plan. <a href="{{ url('retirement', lang) }}">Plan details</a>.</dd></div>
+        <div class="service"><dt>Liability insurance</dt><dd>We help you obtain policies that protect you from claims of professional negligence (malpractice) and for your service on boards of directors.</dd></div>
+      </dl>
+
+      <div class="prose">
+        <h2>Types of credentials</h2>
+        <p>Each member congregation receives credentials for <strong>two ordained ministers</strong> and <strong>two commissioned or licensed ministers</strong>. Additional credentials are available at a separate cost.</p>
+        <p>The membership application covers credentials such as independent minister, evangelist, missionary, worship leader, minister of music and Christian worker. Personnel evaluations, background checks and psychological profiles are kept confidential and shared only with authorized board representatives.</p>
+      </div>
+    </div>
+    <aside class="aside">
+      <h2>Apply for credentials</h2>
+      <p>Download the application, complete it and email it to <a href="mailto:{{ data.ORG.apply_email }}">{{ data.ORG.apply_email }}</a>.</p>
+      <a class="btn" href="{{ data.DOCS.membership_app }}" download>Download the application (PDF)</a>
+      <p class="note">Need help with the form? <a href="{{ url('contact', lang) }}">Send us a message</a>.</p>
+    </aside>
+  </div>
+</div>
+{{ m.contact_band(lang, data, url) }}
+{% endblock %}

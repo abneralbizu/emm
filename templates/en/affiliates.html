@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Affiliated organizations{% endblock %}
+{% block description %}Churches and ministries certified as active members of Excellence Ministry Management.{% endblock %}
+{% block main %}
+{{ m.page_head("Affiliated organizations", "The EMM Board of Directors endorses, recognizes and certifies the following organizations as active members of EMM.") }}
+<div class="content">
+  <div class="wrap">
+    {% for g in data.AFFILIATES %}
+    <h2>{{ g.group[lang] }}</h2>
+    <ul class="affiliates">
+      {% for name, place in g["items"] %}
+      <li><strong>{{ name }}</strong>{% if place %}<span>{{ place }}</span>{% endif %}</li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+    <div class="prose">
+      <p>By publishing this page we certify that the churches and institutions listed are active (charter) members of Excellence Ministry Management, with all the privileges and responsibilities that certification grants. We affirm their call to ministry and their commitment to serve God and others.</p>
+      <p>Your organization can join EMM too. <a href="{{ url('join', lang) }}">See the admission process</a>.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

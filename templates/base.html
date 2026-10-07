@@ -1,0 +1,95 @@
+{% set T = data.UI[lang] %}
+{% set org_name = data.ORG.name_es if lang == 'es' else data.ORG.name_en %}
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{% endblock %} | EMM</title>
+<meta name="description" content="{% block description %}{{ T.tagline }}{% endblock %}">
+{% if noindex %}<meta name="robots" content="noindex">{% endif %}
+<link rel="canonical" href="{{ site_url }}{{ path }}">
+<link rel="alternate" hreflang="{{ lang }}" href="{{ site_url }}{{ path }}">
+<link rel="alternate" hreflang="{{ 'en' if lang == 'es' else 'es' }}" href="{{ site_url }}{{ alt_path }}">
+<link rel="alternate" hreflang="x-default" href="{{ site_url }}{{ path if lang == 'es' else alt_path }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EMM">
+<meta property="og:title" content="{{ self.title() }}">
+<meta property="og:description" content="{{ self.description() }}">
+<meta property="og:url" content="{{ site_url }}{{ path }}">
+<meta property="og:image" content="{{ site_url }}/img/og.png">
+<meta property="og:locale" content="{{ 'es_US' if lang == 'es' else 'en_US' }}">
+<meta name="theme-color" content="#14403C">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/img/emm-icon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/img/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/literata-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/libre-franklin-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/site.js"></script>
+</head>
+<body class="page-{{ page }}">
+<a class="skip" href="#main">{{ T.skip }}</a>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <a class="brand" href="{{ url('home', lang) }}" aria-label="EMM, {{ org_name }}">
+      <img class="brand__logo" src="/img/emm-mark.svg" alt="" width="64" height="54">
+      <span class="brand__text">
+        <span class="brand__short">EMM</span>
+        <span class="brand__long">{{ org_name }}</span>
+      </span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">{{ T.menu }}</button>
+    <nav class="menu" id="site-menu" aria-label="{{ T.menu }}">
+      <ul class="nav">
+        {% for key, label in T.nav %}
+        {% set active = (page == key) or (key == 'churches' and page in ['churches','ministers','exemption','retirement']) %}
+        <li><a href="{{ url(key, lang) }}"{% if active %} aria-current="page"{% endif %}>{{ label }}</a></li>
+        {% endfor %}
+      </ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="{{ alt_path }}" hreflang="{{ 'en' if lang == 'es' else 'es' }}" lang="{{ 'en' if lang == 'es' else 'es' }}" title="{{ T.switch_label }}">{{ T.switch }}</a>
+        <a class="btn btn--give" href="{{ url('give', lang) }}">{{ T.give }}</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__about">
+      <p class="footer__brand"><img class="footer__mark" src="/img/emm-mark-light.svg" alt="" width="48" height="41" loading="lazy"><span>{{ org_name }}</span></p>
+      <p class="footer__former">{{ 'Antes' if lang == 'es' else 'Formerly' }} {{ data.ORG.former_es if lang == 'es' else data.ORG.former_en }} ({{ data.ORG.former_short }})</p>
+      <p class="footer__tagline">{{ T.tagline }}</p>
+      <p class="footer__legal">{{ T.footer_about }}</p>
+    </div>
+    <div>
+      <h2 class="footer__h">{{ T.footer_pages }}</h2>
+      <ul class="footer__links">
+        {% for key, label in T.services_nav %}<li><a href="{{ url(key, lang) }}">{{ label }}</a></li>{% endfor %}
+        <li><a href="{{ url('affiliates', lang) }}">{{ 'Organizaciones afiliadas' if lang == 'es' else 'Affiliated organizations' }}</a></li>
+        <li><a href="{{ url('prayer', lang) }}">{{ T.prayer }}</a></li>
+        <li><a href="{{ url('privacy', lang) }}">{{ T.privacy }}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer__h">{{ T.footer_contact }}</h2>
+      <address class="footer__address">
+        {{ data.ORG.address[0] }}<br>{{ data.ORG.address[1] }}<br>
+        <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a><br>
+        <a href="mailto:{{ data.ORG.email }}">{{ data.ORG.email }}</a>
+      </address>
+    </div>
+  </div>
+  <p class="footer__copy">© {{ year }} {{ org_name }} (EMM)</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Exención contributiva 501(c)(3){% endblock %}
+{% block description %}Su iglesia puede obtener exención contributiva bajo la sección 501(c)(3) por medio de EMM, para que los donativos de su feligresía sean deducibles.{% endblock %}
+{% block main %}
+{{ m.page_head("Exención contributiva 501(c)(3)", "Para que su feligresía pueda deducir sus diezmos, ofrendas y donativos, su iglesia necesita estar cubierta por la sección 501(c)(3) del Código de Rentas Internas.") }}
+{{ m.services_nav(page, lang, data.UI[lang], url) }}
+<div class="content">
+  <div class="wrap layout">
+    <div class="prose">
+      <h2>Por qué importa</h2>
+      <p>Solo las iglesias e instituciones religiosas cubiertas bajo la sección 501(c)(3) pueden asegurar a sus donantes que podrán deducir sus donativos en sus declaraciones de impuestos en los Estados Unidos.</p>
+      <p>Si su iglesia no está cubierta, es posible que sus donantes <strong>no</strong> cualifiquen para la deducción. Además, reclamar una deducción indebida puede provocar una auditoría del IRS a la iglesia o al ministerio.</p>
+      <div class="callout">
+        <p>Las iglesias y ministerios que no están debidamente reconocidos como exentos pueden enfrentar cargos administrativos y hasta criminales, con multas que pueden ser considerables por cada reclamo indebido.</p>
+      </div>
+
+      <h2>Cómo le ayuda EMM</h2>
+      <p>EMM es una organización matriz (master 501(c)(3) organization) ante el Servicio de Rentas Internas (IRS). Al unirse a EMM, su iglesia o ministerio queda bajo esa cobertura, de modo que las actividades financieras de su iglesia y los donativos que recibe quedan amparados por la exención.</p>
+      <p>Como parte de la membresía, también le orientamos para mantener los controles internos y los registros que la exención exige.</p>
+
+      <h2>Cómo comenzar</h2>
+      <p>Descargue la <a href="{{ data.DOCS.membership_app }}" download>solicitud de membresía</a> (PDF), complétela y envíela a <a href="mailto:{{ data.ORG.apply_email }}">{{ data.ORG.apply_email }}</a>. Le llamaremos para conversar sobre su iglesia antes de completar la admisión.</p>
+      <p class="note">Esta página es informativa y no constituye asesoría legal ni contributiva. Su situación particular puede requerir la orientación de un profesional.</p>
+    </div>
+    <aside class="aside">
+      <h2>Incluido en la membresía</h2>
+      <p>La cobertura 501(c)(3) forma parte de los beneficios de toda iglesia miembro, junto con las credenciales y el acceso al plan de retiro.</p>
+      <a class="btn" href="{{ url('join', lang) }}">Ver los beneficios</a>
+    </aside>
+  </div>
+</div>
+{{ m.contact_band(lang, data, url) }}
+{% endblock %}

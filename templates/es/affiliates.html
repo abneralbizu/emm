@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Organizaciones afiliadas{% endblock %}
+{% block description %}Iglesias y ministerios certificados como miembros activos de Excelencia en Administración Ministerial.{% endblock %}
+{% block main %}
+{{ m.page_head("Organizaciones afiliadas", "La Junta de Directores de EMM avala, reconoce y certifica a las siguientes organizaciones como miembros activos de EMM.") }}
+<div class="content">
+  <div class="wrap">
+    {% for g in data.AFFILIATES %}
+    <h2>{{ g.group[lang] }}</h2>
+    <ul class="affiliates">
+      {% for name, place in g["items"] %}
+      <li><strong>{{ name }}</strong>{% if place %}<span>{{ place }}</span>{% endif %}</li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+    <div class="prose">
+      <p>Con la publicación de esta página certificamos que las iglesias e instituciones mencionadas son miembros activos (charter members) de Excelencia en Administración Ministerial, con todos los privilegios y responsabilidades que otorga dicha certificación. Afirmamos su llamado al ministerio y su compromiso de servir a Dios y a los demás.</p>
+      <p>Su organización también puede formar parte de EMM. <a href="{{ url('join', lang) }}">Conozca el proceso de admisión</a>.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

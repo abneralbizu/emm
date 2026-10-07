@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Join EMM{% endblock %}
+{% block description %}EMM membership benefits and how to apply for your church or organization.{% endblock %}
+{% block main %}
+{{ m.page_head("Join EMM", "Churches, ministries and churches in formation can become members of Excellence Ministry Management (EMM).") }}
+<div class="content">
+  <div class="wrap layout">
+    <div>
+      <h2 class="section__title">Membership benefits</h2>
+      <dl class="service-list">
+        <div class="service"><dt>Tax exemption</dt><dd>Coverage of your church's financial activity under section 501(c)(3), so donations are tax-deductible. <a href="{{ url('exemption', lang) }}">Learn more</a>.</dd></div>
+        <div class="service"><dt>Retirement plan</dt><dd>Your ministers can take part in the 403(b) Clergy Retirement Plan. <a href="{{ url('retirement', lang) }}">Learn more</a>.</dd></div>
+        <div class="service"><dt>Credentials</dt><dd>Credentials for two ordained and two commissioned or licensed ministers per congregation.</dd></div>
+        <div class="service"><dt>Background checks</dt><dd>For volunteers serving in key ministries, such as children's ministry.</dd></div>
+      </dl>
+
+      <h2 class="section__title">Preferred rates on</h2>
+      <ul class="ticks">
+        <li>Group health, property, accident and disability insurance</li>
+        <li>Retirement plans</li>
+        <li>Estate planning and living trust seminars</li>
+        <li>Institutional, real estate and estate tax guidance and services</li>
+        <li>Bookkeeping and audits by independent firms</li>
+      </ul>
+
+      <h2 class="section__title">The admission process</h2>
+      <ol class="steps steps--stack">
+        <li><h3>Download the application</h3><p>Choose a category: regular membership for churches and ministries, group membership for affiliated churches, or church in formation.</p></li>
+        <li><h3>Send it complete</h3><p>Email it to <a href="mailto:{{ data.ORG.apply_email }}">{{ data.ORG.apply_email }}</a>. Incomplete applications cannot be processed.</p></li>
+        <li><h3>Review our documents</h3><p>We will send you the EMM constitution and bylaws before a phone interview. Every application is considered carefully and prayerfully.</p></li>
+        <li><h3>Welcome to EMM</h3><p>Once accepted, your church receives coverage, credentials and the EMM directory.</p></li>
+      </ol>
+    </div>
+    <aside class="aside">
+      <h2>Membership application</h2>
+      <p>A 7-page PDF form. If you would like help completing it, call us at <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a>.</p>
+      <a class="btn" href="{{ data.DOCS.membership_app }}" download>Download the application</a>
+      <p class="note">Questions before you apply? <a href="{{ url('contact', lang) }}">Send us a message</a>.</p>
+    </aside>
+  </div>
+</div>
+{% endblock %}

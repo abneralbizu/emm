@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}About us{% endblock %}
+{% block description %}About Excellence Ministry Management (EMM), formerly the National Christian Churches & Ministries Network (NCCMN), its Administra mi Iglesia division and its leadership.{% endblock %}
+{% block main %}
+{{ m.page_head("About EMM", "Excellence Ministry Management (EMM), formerly the National Christian Churches and Ministries Network (NCCMN), is a nonprofit organization exempt under section 501(c)(3) of the Internal Revenue Code.") }}
+<div class="content">
+  <div class="wrap layout">
+    <div class="prose">
+      <h2>Why we exist</h2>
+      <p>Many independent churches, especially Hispanic congregations, carry accounting, taxes, insurance and legal requirements on their own. That weight takes time from the pastor and energy from the mission.</p>
+      <p>EMM exists to carry that load alongside them. That is why we say that at EMM <em>administration serves the mission</em>: sound financial and legal practices strengthen ministry and protect the congregation.</p>
+
+      <h2>Administra mi Iglesia</h2>
+      <p>Administra mi Iglesia (“Manage my Church”) is the EMM division that provides administrative services to local churches, denominations and religious organizations: accounting, payroll, taxes, audits, insurance and more. <a href="{{ url('churches', lang) }}">See all services</a>.</p>
+
+      <h2>A network of churches</h2>
+      <p>Our staff serve from several parts of the United States, and our main office is in Winter Park, Florida. Affiliated churches and ministries are located in Connecticut, New York, New Jersey, Pennsylvania, Florida, Texas and Puerto Rico. <a href="{{ url('affiliates', lang) }}">See the affiliated organizations</a>.</p>
+
+      <h2>Leadership</h2>
+      <ul class="people">
+        {% for p in data.LEADERS %}
+        <li><strong>{{ p.name }}</strong>{{ p.role[lang] }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <aside class="aside">
+      <h2>Main office</h2>
+      <address>
+        {{ data.ORG.address[0] }}<br>{{ data.ORG.address[1] }}<br>
+        Phone <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a><br>
+        Fax {{ data.ORG.fax }}
+      </address>
+      <a class="btn" href="{{ url('contact', lang) }}">Get in touch</a>
+    </aside>
+  </div>
+</div>
+{% endblock %}

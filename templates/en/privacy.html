@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Privacy policy{% endblock %}
+{% block description %}How EMM handles the information you send us through this site.{% endblock %}
+{% block main %}
+{{ m.page_head("Privacy policy", "Effective October 1, 2026.") }}
+<div class="content">
+  <div class="wrap">
+    <div class="prose">
+      <h2>What we collect</h2>
+      <p>This site only receives what you type into our contact and prayer request forms: your name, email, phone, church and message. We do not ask for or store payment details; online gifts are processed off this site by the payment service you choose.</p>
+      <h2>Cookies and analytics</h2>
+      <p>This site uses no cookies, has no user accounts and runs no tracking or advertising scripts. Thumbnails in the training library load from YouTube's image servers; when you open a video you leave this site and YouTube's or Vimeo's policies apply.</p>
+      <h2>How we use it</h2>
+      <p>We use what you send only to answer you and, for prayer requests, to pray for you. We share a request with the prayer team only if you allow it on the form. We never sell or rent your information.</p>
+      <h2>Where it is kept</h2>
+      <p>Messages are stored by this site's hosting service and emailed to EMM staff. We delete messages we no longer need.</p>
+      <h2>Your choices</h2>
+      <p>You can ask us to correct or delete what you sent by writing to <a href="mailto:{{ data.ORG.email }}">{{ data.ORG.email }}</a> or calling {{ data.ORG.phone }}.</p>
+      <h2>Children</h2>
+      <p>This site is meant for adults. We do not knowingly collect information from children under 13.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

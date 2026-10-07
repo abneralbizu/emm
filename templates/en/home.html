@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Excellence Ministry Management{% endblock %}
+{% block description %}Accounting, 501(c)(3) tax exemption, ministerial credentials and a clergy retirement plan for independent churches and their ministers.{% endblock %}
+{% block main %}
+<section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__text">
+      <h1 class="hero__title">Where administration serves the mission</h1>
+      <p class="hero__lead">Excellence Ministry Management (EMM), formerly NCCMN, handles accounting, tax exemption, credentials and retirement for independent churches, so pastors and leaders can give themselves to their calling.</p>
+      <div class="hero__actions">
+        <a class="btn" href="{{ url('join', lang) }}">Bring my church into EMM</a>
+        <a class="btn btn--ghost" href="{{ url('churches', lang) }}">See our services</a>
+      </div>
+    </div>
+    {% include "partials/netmap.html" %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section__title">We serve on two fronts</h2>
+    <div class="split">
+      <div class="split__col">
+        <h3>Your church</h3>
+        <p>We take care of the administration that government, banks and insurers require.</p>
+        <ul class="ticks">
+          <li>Accounting, payroll and taxes</li>
+          <li>Financial reviews and independent audits</li>
+          <li>Property and liability insurance</li>
+          <li>Bylaws, real estate and building projects</li>
+        </ul>
+        <a class="textlink" href="{{ url('churches', lang) }}">Services for churches</a>
+      </div>
+      <div class="split__col">
+        <h3>Those who minister</h3>
+        <p>We stand with pastors and leaders in what their calling requires under the law.</p>
+        <ul class="ticks">
+          <li>Recognized ministerial credentials</li>
+          <li>A 403(b) retirement plan for clergy</li>
+          <li>Health plans and professional liability insurance</li>
+          <li>Guidance on negotiating pastoral compensation</li>
+        </ul>
+        <a class="textlink" href="{{ url('ministers', lang) }}">Services for ministers</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--mist">
+  <div class="wrap">
+    <h2 class="section__title">What your church receives as a member</h2>
+    <dl class="benefits">
+      <div class="benefit">
+        <dt>501(c)(3) tax exemption</dt>
+        <dd>EMM is a parent organization recognized by the IRS. Your church is covered, and your donors can deduct their tithes and offerings.</dd>
+        <dd><a class="textlink" href="{{ url('exemption', lang) }}">How the coverage works</a></dd>
+      </div>
+      <div class="benefit">
+        <dt>Credentials for four ministers</dt>
+        <dd>Two ordained and two commissioned or licensed ministers per congregation, plus background checks for key volunteers.</dd>
+      </div>
+      <div class="benefit">
+        <dt>A clergy retirement plan</dt>
+        <dd>Access to EMM's 403(b) Retirement Plan, and preferred rates on insurance, estate planning and bookkeeping.</dd>
+        <dd><a class="textlink" href="{{ url('retirement', lang) }}">About the plan</a></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap steps-wrap">
+    <h2 class="section__title">How to join</h2>
+    <ol class="steps">
+      <li><h3>Download the application</h3><p><a href="{{ data.DOCS.membership_app }}" download>Membership application</a> (PDF, 7 pages).</p></li>
+      <li><h3>Email it to us</h3><p>Send the completed form to <a href="mailto:{{ data.ORG.apply_email }}">{{ data.ORG.apply_email }}</a>.</p></li>
+      <li><h3>Talk with us</h3><p>You will receive the EMM constitution and bylaws to review before a phone interview.</p></li>
+      <li><h3>Receive your credentials</h3><p>Once accepted, your church is covered by EMM and your ministers receive their credentials.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--mist">
+  <div class="wrap">
+    <h2 class="section__title">Leadership formation</h2>
+    <div class="trio">
+      <a class="trio__item" href="{{ url('training', lang) }}">
+        <h3>Ministry training library</h3>
+        <p>{{ data.video_count() }} talks on preaching, leadership, Christian education and congregational life, mostly by Rev. Dr. Pablo A. Jiménez. Most are in Spanish.</p>
+      </a>
+      <a class="trio__item" href="{{ url('resources', lang) }}">
+        <h3>Documents for your church</h3>
+        <p>Sample bylaws, commission charters, conflict guides and materials from the CRECE program.</p>
+      </a>
+      <a class="trio__item" href="{{ url('reflections', lang) }}">
+        <h3>Reflections</h3>
+        <p>Devotionals and articles, including the seven-day series “From Worry to Confident Hope” on the Lord’s Prayer.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+{{ m.contact_band(lang, data, url) }}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Servicios para iglesias{% endblock %}
+{% block description %}Contabilidad, nómina, auditorías, impuestos, seguros, exención 501(c)(3), reglamentos, bienes raíces y construcción para iglesias y organizaciones religiosas.{% endblock %}
+{% block main %}
+{{ m.page_head("Servicios para iglesias", "Atendemos la administración de iglesias locales, denominaciones y organizaciones religiosas sin fines de lucro. Estos servicios los ofrece Administra mi Iglesia, la división de servicios administrativos de EMM.") }}
+{{ m.services_nav(page, lang, data.UI[lang], url) }}
+<div class="content">
+  <div class="wrap layout">
+    <div>
+      <h2 class="section__title">Finanzas y cumplimiento</h2>
+      <dl class="service-list">
+        <div class="service"><dt>Contabilidad</dt><dd>Llevamos la contabilidad de su organización: clasificamos los gastos, gestionamos los pagos de las obligaciones regulares y preparamos los informes financieros.</dd></div>
+        <div class="service"><dt>Nómina</dt><dd>Preparamos la nómina del personal pagado de la iglesia, con atención particular al sostenimiento pastoral.</dd></div>
+        <div class="service"><dt>Impuestos</dt><dd>Hacemos las retenciones correspondientes y sometemos los pagos que exige el gobierno.</dd></div>
+        <div class="service"><dt>Auditorías</dt><dd>Coordinamos revisiones financieras y auditorías por organizaciones independientes, como lo requieren el gobierno, la banca y la industria.</dd></div>
+        <div class="service"><dt>Exención contributiva</dt><dd>Como organización matriz 501(c)(3) ante el IRS, podemos dar a su iglesia la cobertura para que sus donativos sean deducibles. <a href="{{ url('exemption', lang) }}">Cómo funciona</a>.</dd></div>
+        <div class="service"><dt>Pólizas de seguro</dt><dd>Le ayudamos a encontrar las pólizas adecuadas para proteger su propiedad y cumplir con la responsabilidad pública, al menor costo posible.</dd></div>
+      </dl>
+
+      <h2 class="section__title">Gobierno y propiedad</h2>
+      <dl class="service-list">
+        <div class="service"><dt>Redacción de reglamentos</dt><dd>Le ayudamos a redactar la constitución y el reglamento (by-laws) de su iglesia u organización.</dd></div>
+        <div class="service"><dt>Búsqueda pastoral</dt><dd>Le asesoramos en la búsqueda de una nueva figura pastoral para su iglesia local.</dd></div>
+        <div class="service"><dt>Verificación de antecedentes</dt><dd>Gestionamos la verificación de antecedentes penales del personal y de los voluntarios, por ejemplo en el ministerio con la niñez.</dd></div>
+        <div class="service"><dt>Procedimientos operacionales</dt><dd>Desde la seguridad hasta la administración, preparamos manuales y procedimientos actualizados para cada área de su ministerio.</dd></div>
+        <div class="service"><dt>Bienes raíces y financiamiento</dt><dd>Asesoría legal y financiera para comprar o vender templos y otros edificios. Preparamos su solicitud de préstamo, la presentamos a varios prestamistas y le ayudamos con campañas de capital.</dd></div>
+        <div class="service"><dt>Construcción</dt><dd>Asesoría y supervisión de proyectos de construcción o remodelación de templos y escuelas, incluidos los permisos de construcción y de uso.</dd></div>
+      </dl>
+    </div>
+    <aside class="aside">
+      <h2>¿Por dónde empezar?</h2>
+      <p>La mayoría de las iglesias comienzan uniéndose a EMM, lo que incluye la cobertura 501(c)(3) y las credenciales. Los demás servicios se contratan según su necesidad.</p>
+      <a class="btn" href="{{ url('join', lang) }}">Cómo unirse</a>
+      <p class="note">¿Prefiere hablar primero? Llame al <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a>.</p>
+    </aside>
+  </div>
+</div>
+{{ m.contact_band(lang, data, url) }}
+{% endblock %}

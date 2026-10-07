@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Servicios para ministros{% endblock %}
+{% block description %}Credenciales ministeriales, sostenimiento pastoral, plan médico, plan de retiro 403(b) y seguros para pastores y líderes religiosos.{% endblock %}
+{% block main %}
+{{ m.page_head("Servicios para ministros", "Para quienes sirven en el ministerio pastoral o dirigen instituciones religiosas sin fines de lucro.") }}
+{{ m.services_nav(page, lang, data.UI[lang], url) }}
+<div class="content">
+  <div class="wrap layout">
+    <div>
+      <dl class="service-list">
+        <div class="service"><dt>Credenciales</dt><dd>Por medio de EMM puede obtener credenciales ministeriales que le acreditan como líder religioso ante el gobierno y la industria. Las credenciales son también necesarias para ciertos beneficios contributivos de los ministros.</dd></div>
+        <div class="service"><dt>Sostenimiento pastoral</dt><dd>Le asesoramos al negociar el sostenimiento que ha de recibir, para que tenga un ingreso digno, acorde con su función ministerial.</dd></div>
+        <div class="service"><dt>Plan médico</dt><dd>Le ayudamos a gestionar planes médicos para usted, su familia o un grupo de su iglesia local. También cotizaciones de seguro de vida, discapacidad y cuidado a largo plazo.</dd></div>
+        <div class="service"><dt>Retiro</dt><dd>Puede participar en el Plan de Retiro y Jubilación 403(b) para el clero de las iglesias afiliadas a EMM. <a href="{{ url('retirement', lang) }}">Detalles del plan</a>.</dd></div>
+        <div class="service"><dt>Seguros de responsabilidad</dt><dd>Le ayudamos a obtener pólizas que le protejan de demandas por negligencia profesional (malpractice) y por su servicio en juntas de directores.</dd></div>
+      </dl>
+
+      <div class="prose">
+        <h2>Tipos de credenciales</h2>
+        <p>Cada congregación miembro recibe credenciales para <strong>dos ministros ordenados</strong> y <strong>dos ministros comisionados o licenciados</strong>. Credenciales adicionales están disponibles a un costo aparte.</p>
+        <p>La solicitud de membresía incluye, entre otras, las credenciales de ministro independiente, evangelista, misionero, líder de alabanza, ministro de música y obrero cristiano. Las evaluaciones de personal, verificaciones de antecedentes y perfiles psicológicos se guardan de forma confidencial y solo se comparten con representantes autorizados de la junta.</p>
+      </div>
+    </div>
+    <aside class="aside">
+      <h2>Solicitar credenciales</h2>
+      <p>Descargue la solicitud, complétela y envíela a <a href="mailto:{{ data.ORG.apply_email }}">{{ data.ORG.apply_email }}</a>.</p>
+      <a class="btn" href="{{ data.DOCS.membership_app }}" download>Descargar la solicitud (PDF)</a>
+      <p class="note">El formulario está en inglés. Si necesita ayuda para llenarlo, <a href="{{ url('contact', lang) }}">escríbanos</a>.</p>
+    </aside>
+  </div>
+</div>
+{{ m.contact_band(lang, data, url) }}
+{% endblock %}

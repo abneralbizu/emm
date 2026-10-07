@@ -1,0 +1,20 @@
+{% set T = data.UI[lang] %}
+{% set series = articles|selectattr("series", "equalto", "lords-prayer")|sort(attribute="day")|list %}
+{% set others = articles|rejectattr("series", "equalto", "lords-prayer")|list %}
+<section class="series">
+  <h2>{{ data.SERIES['lords-prayer'][lang] }}</h2>
+  <p>{% if lang == 'es' %}Una semana de oración, del domingo al sábado, por Manuel Collazo. Septiembre de 2020, en inglés.{% else %}A week of prayer, Sunday to Saturday, by Manuel Collazo. September 2020.{% endif %}</p>
+  <ol>
+    {% for a in series %}
+    <li><a href="{{ article_url(a.slug, lang) }}" lang="en">{{ a.title }}</a></li>
+    {% endfor %}
+  </ol>
+</section>
+<ul class="posts">
+  {% for a in others %}
+  <li class="post">
+    <h2><a href="{{ article_url(a.slug, lang) }}" lang="{{ a.lang }}">{{ a.title }}</a></h2>
+    <p class="post__meta">{{ a.author }}, {{ data.fmt_date(a.date, lang) }}{% if a.lang != lang %} ({{ T.in_english if a.lang == 'en' else T.in_spanish }}){% endif %}</p>
+  </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Página no encontrada / Page not found{% endblock %}
+{% block main %}
+{{ m.page_head("No encontramos esa página", "Puede que la dirección haya cambiado con el nuevo sitio. We couldn't find that page; it may have moved with the new site.") }}
+<div class="content">
+  <div class="wrap prose">
+    <p><a class="btn" href="/">Ir a la página principal</a> <a class="btn btn--ghost" href="/en/">Go to the English home page</a></p>
+    <ul>
+      <li><a href="{{ url('churches', 'es') }}">Servicios para iglesias</a> / <a href="{{ url('churches', 'en') }}">Services for churches</a></li>
+      <li><a href="{{ url('resources', 'es') }}">Recursos</a> / <a href="{{ url('resources', 'en') }}">Resources</a></li>
+      <li><a href="{{ url('contact', 'es') }}">Contacto</a> / <a href="{{ url('contact', 'en') }}">Contact</a></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

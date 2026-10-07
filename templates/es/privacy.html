@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Política de privacidad{% endblock %}
+{% block description %}Cómo EMM trata la información que usted nos envía por este sitio.{% endblock %}
+{% block main %}
+{{ m.page_head("Política de privacidad", "Vigente desde el 1 de octubre de 2026.") }}
+<div class="content">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Lo que recogemos</h2>
+      <p>Este sitio solo recibe la información que usted escribe en nuestros formularios de contacto y de peticiones de oración: su nombre, correo electrónico, teléfono, iglesia y mensaje. No pedimos ni guardamos datos de pago; los donativos en línea se procesan fuera de este sitio, en el servicio de pagos que usted elija.</p>
+      <h2>Cookies y estadísticas</h2>
+      <p>Este sitio no usa cookies, no tiene sistema de cuentas de usuario y no instala programas de rastreo ni de publicidad. Las miniaturas de la videoteca se cargan desde los servidores de imágenes de YouTube; al abrir un video, sale de este sitio y aplican las políticas de YouTube o Vimeo.</p>
+      <h2>Cómo usamos su información</h2>
+      <p>Usamos lo que nos envía únicamente para responderle y, en el caso de las peticiones de oración, para orar por usted. Solo compartimos una petición con el equipo de oración si usted lo autoriza en el formulario. No vendemos ni alquilamos su información.</p>
+      <h2>Dónde se guarda</h2>
+      <p>Los mensajes se almacenan en el servicio de alojamiento de este sitio y se envían por correo electrónico al personal de EMM. Borramos los mensajes que ya no necesitamos.</p>
+      <h2>Sus opciones</h2>
+      <p>Puede pedirnos que corrijamos o borremos la información que nos envió escribiendo a <a href="mailto:{{ data.ORG.email }}">{{ data.ORG.email }}</a> o llamando al {{ data.ORG.phone }}.</p>
+      <h2>Menores de edad</h2>
+      <p>Este sitio está dirigido a adultos. No recogemos a sabiendas información de menores de 13 años.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

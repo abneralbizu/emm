@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Reflexiones{% endblock %}
+{% block description %}Devocionales y artículos de los líderes de EMM sobre oración, predicación y vida cristiana.{% endblock %}
+{% block main %}
+{{ m.page_head("Reflexiones", "Devocionales y artículos de los líderes de EMM sobre la oración, la predicación y la vida cristiana. La mayoría se publicaron originalmente en inglés.") }}
+<div class="content">
+  <div class="wrap prose-wrap">
+    {% include "partials/reflections_list.html" %}
+  </div>
+</div>
+{% endblock %}

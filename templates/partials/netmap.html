@@ -1,0 +1,44 @@
+{# Hub-and-spoke map of affiliated churches. Positions come from build.py / content/data.py #}
+<figure class="netmap">
+  <svg viewBox="0 0 620 560" role="img" aria-labelledby="netmap-title netmap-desc">
+    <title id="netmap-title">{{ 'Mapa de iglesias afiliadas' if lang == 'es' else 'Map of affiliated churches' }}</title>
+    <desc id="netmap-desc">{% if lang == 'es' %}Líneas que conectan la oficina central en Winter Park, Florida, con iglesias y ministerios afiliados en {% else %}Lines connecting the main office in Winter Park, Florida, with affiliated churches and ministries in {% endif %}{% for n in netmap.nodes %}{{ (n.label_en if lang == 'en' and n.label_en else n.label) }}{{ ', ' if not loop.last else '.' }}{% endfor %}</desc>
+    <g class="netmap__grid" aria-hidden="true">
+      {% for gx, gy in netmap.grid %}<circle cx="{{ gx }}" cy="{{ gy }}" r="1.1"/>{% endfor %}
+    </g>
+    <g class="netmap__states" aria-hidden="true">
+      {% for code, lon, lat in data.MAP_STATES %}
+      <text x="{{ ((lon + 99.5) * 17.0)|round(1) }}" y="{{ ((45.5 - lat) * 17.0 * 1.18)|round(1) }}">{{ code }}</text>
+      {% endfor %}
+    </g>
+    <g class="netmap__links" aria-hidden="true">
+      {% for n in netmap.nodes %}
+      <path d="{{ n.path }}" pathLength="100"/>
+      {% endfor %}
+    </g>
+    <g class="netmap__nodes">
+      {% for n in netmap.nodes %}
+      <g class="netmap__node">
+        <circle cx="{{ n.x }}" cy="{{ n.y }}" r="{{ n.r|round(1) }}"/>
+        <title>{{ n.label_en if lang == 'en' and n.label_en else n.label }}: {{ n.count }} {{ ('iglesia' if n.count == 1 else 'iglesias y ministerios') if lang == 'es' else ('church' if n.count == 1 else 'churches and ministries') }}</title>
+      </g>
+      {% endfor %}
+      <g class="netmap__hq">
+        <circle class="netmap__ring" cx="{{ netmap.hq.x }}" cy="{{ netmap.hq.y }}" r="16"/>
+        <circle cx="{{ netmap.hq.x }}" cy="{{ netmap.hq.y }}" r="8"/>
+      </g>
+    </g>
+    <g class="netmap__labels" aria-hidden="true">
+      <text x="{{ netmap.hq.x - 24 }}" y="{{ netmap.hq.y + 5 }}" text-anchor="end" class="is-hq">Winter Park</text>
+      {% set nyc = netmap.nodes[3] %}
+      <text x="{{ nyc.x + 16 }}" y="{{ nyc.y + 20 }}">{{ 'Nueva York' if lang == 'es' else 'New York' }}</text>
+      {% set tx = netmap.nodes[9] %}
+      <text x="{{ tx.x }}" y="{{ tx.y + 24 }}" text-anchor="middle">Austin</text>
+      {% set pr = netmap.nodes[10] %}
+      <text x="{{ pr.x }}" y="{{ pr.y - 14 }}" text-anchor="middle">Ceiba</text>
+      {% set roc = netmap.nodes[0] %}
+      <text x="{{ roc.x }}" y="{{ roc.y - 12 }}" text-anchor="middle">Rochester</text>
+    </g>
+  </svg>
+  <figcaption>{% if lang == 'es' %}Iglesias y ministerios afiliados, conectados con nuestra oficina en Winter Park, Florida.{% else %}Affiliated churches and ministries, connected to our office in Winter Park, Florida.{% endif %}</figcaption>
+</figure>

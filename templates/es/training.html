@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Formación ministerial{% endblock %}
+{% block description %}Videoteca de formación ministerial: predicación, liderazgo, educación cristiana, teología y vida congregacional.{% endblock %}
+{% block main %}
+{{ m.page_head("Formación ministerial", "Una videoteca de " ~ data.video_count() ~ " charlas para el desarrollo de líderes y del talento de nuestras congregaciones, en su mayoría por el Rev. Dr. Pablo A. Jiménez. Los videos se abren en YouTube o Vimeo.") }}
+<div class="content">
+  <div class="wrap">
+    {% include "partials/videos.html" %}
+    <p class="note">Para formación teológica formal, vea los programas de la <a href="https://rededucativagenesaret.com" rel="noopener">Red Educativa Genesaret</a> y el <a href="{{ url('resources', lang) }}#enlaces">Programa de Ministerios Hispanos de Gordon-Conwell</a>.</p>
+  </div>
+</div>
+{% endblock %}

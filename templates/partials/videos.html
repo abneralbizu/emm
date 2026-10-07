@@ -1,0 +1,35 @@
+{# Shared video library body. Thumbnails load from YouTube's image server; videos open on YouTube/Vimeo. #}
+{% set T = data.UI[lang] %}
+<ul class="toc">
+  {% for c in data.VIDEO_COLLECTIONS %}
+  <li><a href="#{{ c.id }}">{{ c.title[lang] }}</a></li>
+  {% endfor %}
+</ul>
+{% for c in data.VIDEO_COLLECTIONS %}
+<section class="collection" id="{{ c.id }}">
+  <div class="collection__head">
+    <h2>{{ c.title[lang] }}</h2>
+    <span class="collection__count">{{ c.videos|length }} {{ T.videos }}{% if c.lang != lang %}, {{ T.in_english if c.lang == 'en' else T.in_spanish }}{% endif %}</span>
+    <p>{{ c.intro[lang] }}</p>
+  </div>
+  <ul class="videos">
+    {% for title, kind, vid in c.videos %}
+    <li class="video">
+      {% if kind == 'yt' %}
+      <a href="https://www.youtube.com/watch?v={{ vid }}" rel="noopener" target="_blank">
+        <span class="video__thumb"><img src="https://i.ytimg.com/vi/{{ vid }}/mqdefault.jpg" alt="" width="320" height="180" loading="lazy" decoding="async"></span>
+        <span class="video__title" lang="{{ c.lang }}">{{ title }}</span>
+        <span class="video__src">{{ T.watch }}</span>
+      </a>
+      {% else %}
+      <a href="https://vimeo.com/{{ vid }}" rel="noopener" target="_blank">
+        <span class="video__thumb video__thumb--plain"></span>
+        <span class="video__title" lang="{{ c.lang }}">{{ title }}</span>
+        <span class="video__src">{{ T.watch_vimeo }}</span>
+      </a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}

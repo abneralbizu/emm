@@ -1,0 +1,91 @@
+# Old WordPress addresses -> new pages (301 = moved permanently, keeps search rankings)
+# Spanish core pages
+/inicio                         /                               301
+/about-us                       /nosotros/                      301
+/sample-page/member-benefits    /servicios/iglesias/            301
+/member-benefits                /servicios/iglesias/            301
+/other-services                 /servicios/iglesias/            301
+/other-services/*               /servicios/iglesias/            301
+/stewardship                    /servicios/iglesias/            301
+/communication                  /servicios/iglesias/            301
+/procedures                     /servicios/iglesias/            301
+/audit                          /servicios/iglesias/            301
+/church_insurance               /servicios/iglesias/            301
+/ministros                      /servicios/ministros/           301
+/credentials                    /servicios/ministros/           301
+/501c3                          /exencion-contributiva/         301
+/national-christian-churches-ministries-network-clergy-retirement-plan  /plan-de-retiro/  301
+/charter-member-churches-and-organizations  /organizaciones-afiliadas/  301
+/fee-schedule                   /unase/                         301
+/membership-account             /unase/                         301
+/membership-account/*           /unase/                         301
+/enlaces-links                  /recursos/              301
+/resources                      /recursos/                      301
+/crece                          /recursos/                301
+/evaluate                       /recursos/                301
+/cine-foro                      /recursos/            301
+/covid-19-manejando-el-impacto  /recursos/                      301
+/covid-19-re-apertura           /recursos/                      301
+/contact-us                     /contacto/                      301
+/contact                        /contacto/                      301
+/donate                         /donar/                         301
+/blessings                      /donar/                         301
+/give_thanks                    /donar/                         301
+/prayer-request                 /oracion/                       301
+/privacy-and-cookies-policy     /privacidad/                    301
+
+# Training pages
+/education                      /formacion/                     301
+/espanol                        /formacion/                     301
+/predicacion                    /formacion/                     301
+/educacion-cristiana            /formacion/ 301
+/como-predicar                  /formacion/       301
+/siete                          /formacion/        301
+/elsermonnarrativo              /formacion/    301
+/renueve-su-predicacion         /formacion/             301
+/liderazgo-cristiano            /formacion/           301
+/mentor                         /formacion/    301
+/pasioneducacioncristiana       /formacion/ 301
+/conceptos-teologicos           /formacion/            301
+/vida-congregacional            /formacion/ 301
+/vida-congregacional-2          /formacion/ 301
+/oracion-y-ayuno-isaias-586-12  /formacion/             301
+/revitalize-your-church         /en/training/    301
+/the-declining-church           /en/training/    301
+/the-thriving-church            /en/training/    301
+/the-power-of-a-vision-part-1   /en/training/    301
+/the-power-of-a-vision-part-2   /en/training/    301
+/ubuntu-a-bilingual-sermon-dr-pablo-jimenez  /en/training/  301
+
+# Blog posts
+/a-journey-from-worry-to-confident-hope-praying-through-the-lords-prayer        /en/reflections/padre-nuestro-dia-1/  301
+/a-journey-from-worry-to-confident-hope-praying-through-the-lords-prayer-day-2  /en/reflections/padre-nuestro-dia-2/  301
+/a-journey-from-worry-to-confident-hope-praying-through-the-lords-prayer-day-3  /en/reflections/padre-nuestro-dia-3/  301
+/a-journey-from-worry-to-confident-hope-praying-through-the-lords-prayer-day-4  /en/reflections/padre-nuestro-dia-4/  301
+/a-journey-from-worry-to-confident-hope-praying-through-the-lords-prayer-day-5  /en/reflections/padre-nuestro-dia-5/  301
+/a-journey-from-worry-to-confident-hope-praying-through-the-lords-prayer-day-6  /en/reflections/padre-nuestro-dia-6/  301
+/a-journey-from-worry-to-confident-hope-praying-through-the-lords-prayer-day-7  /en/reflections/padre-nuestro-dia-7/  301
+/the-three-steps-biblical-interpretation-for-preaching  /en/reflections/the-three-steps/  301
+/have-you-noticed               /en/reflections/have-you-noticed/     301
+/missing-ingredients            /en/reflections/missing-ingredients/  301
+/a-proclamation                 /en/reflections/a-proclamation/       301
+/sample-page/blog               /reflexiones/                   301
+/feed                           /reflexiones/                   301
+/category/*                     /reflexiones/                   301
+/tag/*                          /reflexiones/                   301
+/author/*                       /reflexiones/                   301
+/2014/*                         /reflexiones/                   301
+/2015/*                         /reflexiones/                   301
+/2020/*                         /reflexiones/                   301
+
+# Old document folders (only files that exist in /documents/ will load)
+/CRECE/*                        /documents/crece/:splat         301
+/crece/*                        /documents/crece/:splat         301
+
+# Old WordPress system paths: answer "not found" quickly
+/wp-admin/*                     /404.html                       404!
+/wp-login.php                   /404.html                       404!
+/xmlrpc.php                     /404.html                       404!
+/wp-content/*                   /404.html                       404!
+/wp-includes/*                  /404.html                       404!
+/wp-json/*                      /404.html                       404!

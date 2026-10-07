@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Services for churches{% endblock %}
+{% block description %}Accounting, payroll, audits, taxes, insurance, 501(c)(3) exemption, bylaws, real estate and building support for churches and religious organizations.{% endblock %}
+{% block main %}
+{{ m.page_head("Services for churches", "We handle administration for local churches, denominations and nonprofit religious organizations. These services are provided by Administra mi Iglesia, EMM's administrative services division.") }}
+{{ m.services_nav(page, lang, data.UI[lang], url) }}
+<div class="content">
+  <div class="wrap layout">
+    <div>
+      <h2 class="section__title">Finance and compliance</h2>
+      <dl class="service-list">
+        <div class="service"><dt>Accounting</dt><dd>We keep your organization's books: classifying expenses, managing regular payments and preparing financial reports.</dd></div>
+        <div class="service"><dt>Payroll</dt><dd>We prepare payroll for the church's paid staff, with particular care for pastoral compensation.</dd></div>
+        <div class="service"><dt>Taxes</dt><dd>We handle the required withholdings and submit the payments the government requires.</dd></div>
+        <div class="service"><dt>Audits</dt><dd>We coordinate financial reviews and audits by independent firms, as required by government, banks and industry.</dd></div>
+        <div class="service"><dt>Tax exemption</dt><dd>As a 501(c)(3) parent organization recognized by the IRS, we can extend coverage so your church's donations are deductible. <a href="{{ url('exemption', lang) }}">How it works</a>.</dd></div>
+        <div class="service"><dt>Insurance</dt><dd>We help you find the right policies to protect your property and meet public liability requirements, at the lowest possible cost.</dd></div>
+      </dl>
+
+      <h2 class="section__title">Governance and property</h2>
+      <dl class="service-list">
+        <div class="service"><dt>Bylaws</dt><dd>We help you write the constitution and bylaws for your church or organization.</dd></div>
+        <div class="service"><dt>Pastoral search</dt><dd>We advise your congregation in the search for a new pastor.</dd></div>
+        <div class="service"><dt>Background checks</dt><dd>We manage criminal background checks for staff and volunteers, for example in children's ministry.</dd></div>
+        <div class="service"><dt>Operating procedures</dt><dd>From security to administration, we prepare current manuals and procedures for every area of your ministry.</dd></div>
+        <div class="service"><dt>Real estate and financing</dt><dd>Legal and financial guidance for buying or selling sanctuaries and other buildings. We prepare your loan package, present it to several lenders and help with capital campaigns.</dd></div>
+        <div class="service"><dt>Building projects</dt><dd>Guidance and oversight for building or remodeling sanctuaries and schools, including construction and occupancy permits.</dd></div>
+      </dl>
+    </div>
+    <aside class="aside">
+      <h2>Where to start</h2>
+      <p>Most churches begin by joining EMM, which includes 501(c)(3) coverage and credentials. Other services are added as you need them.</p>
+      <a class="btn" href="{{ url('join', lang) }}">How to join</a>
+      <p class="note">Rather talk first? Call <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a>.</p>
+    </aside>
+  </div>
+</div>
+{{ m.contact_band(lang, data, url) }}
+{% endblock %}

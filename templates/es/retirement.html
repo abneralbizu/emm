@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Plan de Retiro Pastoral 403(b){% endblock %}
+{% block description %}El Plan de Retiro y Jubilación 403(b) para el clero de iglesias y ministerios relacionados con EMM.{% endblock %}
+{% block main %}
+{{ m.page_head("Plan de Retiro Pastoral 403(b)", "Ministros que sirven en iglesias y ministerios afiliados a EMM pueden participar en el Plan de Retiro y Jubilación 403(b) para el clero de EMM.") }}
+{{ m.services_nav(page, lang, data.UI[lang], url) }}
+<div class="content">
+  <div class="wrap layout">
+    <div class="prose">
+      <h2>Cómo se rige el plan</h2>
+      <p>El plan se rige por un documento legal que contiene todas las disposiciones que el Servicio de Rentas Internas (IRS) exige a la iglesia o al ministerio que lo implanta y administra. Ese documento sigue las leyes y regulaciones federales que aplican a los planes de retiro.</p>
+      <p>El documento del plan puede cambiar con nuevas leyes y regulaciones federales. Su iglesia o ministerio también puede modificar ciertas disposiciones según su situación financiera. Cuando haya cambios, notificaremos a todos los participantes sobre cualquier cambio que afecte sus derechos o responsabilidades.</p>
+
+      <h2>Qué explica la descripción del plan</h2>
+      <ul>
+        <li>Quién es elegible para hacer aportaciones electivas y recibir aportaciones del patrono</li>
+        <li>Cómo hacer, cambiar o detener las aportaciones que se retienen de su salario</li>
+        <li>Los límites anuales de aportación</li>
+        <li>Cómo y cuándo se pueden recibir los beneficios</li>
+      </ul>
+    </div>
+    <aside class="aside">
+      <h2>Descripción del plan</h2>
+      <p>National Christian Churches &amp; Ministries Network Clergy Retirement Plan, versión del 1 de enero de 2019. Documento en inglés, 9 páginas. El plan conserva su nombre legal original.</p>
+      <a class="btn" href="{{ data.DOCS.spd }}" download>Descargar (PDF)</a>
+      <p class="note">Para inscribirse o hacer preguntas sobre su cuenta, <a href="{{ url('contact', lang) }}">comuníquese con nosotros</a>.</p>
+    </aside>
+  </div>
+</div>
+{{ m.contact_band(lang, data, url) }}
+{% endblock %}

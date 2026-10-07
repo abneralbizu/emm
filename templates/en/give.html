@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Give{% endblock %}
+{% block description %}Support Excellence Ministry Management. Gifts are tax-deductible as allowed by law.{% endblock %}
+{% block main %}
+{{ m.page_head("Support EMM", "Your gift helps strengthen ministries through sound financial practices.") }}
+<div class="content">
+  <div class="wrap layout">
+    <div class="prose">
+      <p>Some churches are small and can't cover travel costs. Your gift lets us reach them by video conference or in person, with workshops, guidance and support.</p>
+      <h2>Give online</h2>
+      <p>Online gifts are processed through a secure payment service. The button takes you off this site to complete your gift.</p>
+      <p><a class="btn" href="{{ data.ORG.give_url }}" rel="noopener">Give online</a></p>
+      <h2>Give by check</h2>
+      <p>Make your check payable to <strong>{{ data.ORG.legal_name }}</strong> and mail it to:</p>
+      <address>{{ data.ORG.address[0] }}<br>{{ data.ORG.address[1] }}</address>
+      <p class="note">EMM is a nonprofit organization exempt under section 501(c)(3). Gifts are tax-deductible as allowed by law. We will send you a receipt for your records.</p>
+    </div>
+    <aside class="aside">
+      <h2>Questions about giving</h2>
+      <p>For receipts, recurring gifts or offerings from your church, call <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a> or <a href="{{ url('contact', lang) }}">send us a message</a>.</p>
+    </aside>
+  </div>
+</div>
+{% endblock %}

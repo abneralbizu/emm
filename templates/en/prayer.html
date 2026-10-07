@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Prayer requests{% endblock %}
+{% block description %}Send your prayer request to Excellence Ministry Management.{% endblock %}
+{% block main %}
+{{ m.page_head("Prayer requests", "Fill in the form and we will add you to our prayer list.") }}
+<div class="content">
+  <div class="wrap contact-grid">
+    <form class="form" name="prayer" method="POST" action="{{ url('thanks', lang) }}" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="prayer">
+      <input type="hidden" name="idioma" value="en">
+      {{ m.honeypot() }}
+      <div class="field"><label for="p-name">Name <span class="hint">Your first name is fine</span></label><input id="p-name" name="nombre" autocomplete="given-name" maxlength="120"></div>
+      <div class="field"><label for="p-email">Email <span class="hint">Optional, if you would like us to write back</span></label><input id="p-email" name="email" type="email" autocomplete="email" maxlength="200"></div>
+      <div class="field"><label for="p-req">Your request</label><textarea id="p-req" name="peticion" required maxlength="3000"></textarea></div>
+      <div class="field check"><input id="p-share" name="compartir" type="checkbox" value="si"><label for="p-share">You may share my request with the EMM prayer team</label></div>
+      <button class="btn" type="submit">Send request</button>
+    </form>
+    <aside class="aside">
+      <blockquote class="verse">
+        <p>“I call on you, my God, for you will answer me; turn your ear to me and hear my prayer.”</p>
+        <footer>Psalm 17:6 (NIV)</footer>
+      </blockquote>
+    </aside>
+  </div>
+</div>
+{% endblock %}

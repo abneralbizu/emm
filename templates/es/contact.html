@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Contacto{% endblock %}
+{% block description %}Comuníquese con la oficina central de EMM en Winter Park, Florida.{% endblock %}
+{% block main %}
+{{ m.page_head("Comuníquese con nosotros", "Para información sobre nuestros servicios, la membresía o las credenciales, escríbanos o llame a la oficina central.") }}
+<div class="content">
+  <div class="wrap contact-grid">
+    <form class="form" name="contact" method="POST" action="{{ url('thanks', lang) }}" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="idioma" value="es">
+      {{ m.honeypot() }}
+      <div class="field"><label for="c-name">Nombre</label><input id="c-name" name="nombre" autocomplete="name" required maxlength="120"></div>
+      <div class="field"><label for="c-email">Correo electrónico</label><input id="c-email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+      <div class="field"><label for="c-phone">Teléfono <span class="hint">Opcional</span></label><input id="c-phone" name="telefono" type="tel" autocomplete="tel" maxlength="40"></div>
+      <div class="field"><label for="c-church">Iglesia u organización <span class="hint">Opcional</span></label><input id="c-church" name="iglesia" autocomplete="organization" maxlength="200"></div>
+      <div class="field">
+        <label for="c-topic">Tema</label>
+        <select id="c-topic" name="tema">
+          <option>Membresía de mi iglesia</option>
+          <option>Credenciales ministeriales</option>
+          <option>Exención contributiva 501(c)(3)</option>
+          <option>Plan de retiro</option>
+          <option>Contabilidad, nómina o impuestos</option>
+          <option>Recursos o Cine Foro</option>
+          <option>Otro asunto</option>
+        </select>
+      </div>
+      <div class="field"><label for="c-msg">Mensaje</label><textarea id="c-msg" name="mensaje" required maxlength="5000"></textarea></div>
+      <p class="note">No incluya números de Seguro Social, cuentas bancarias ni otros datos confidenciales en este formulario. Vea nuestra <a href="{{ url('privacy', lang) }}">política de privacidad</a>.</p>
+      <button class="btn" type="submit">Enviar mensaje</button>
+    </form>
+    <aside class="aside">
+      <h2>Oficina central</h2>
+      <address>
+        {{ data.ORG.address[0] }}<br>{{ data.ORG.address[1] }}<br>
+        Tel. <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a><br>
+        Fax {{ data.ORG.fax }}<br>
+        <a href="mailto:{{ data.ORG.email }}">{{ data.ORG.email }}</a>
+      </address>
+      <ul class="people">
+        {% for p in data.LEADERS %}
+        <li><strong>{{ p.name }}</strong>{{ p.role[lang] }}<br><a href="mailto:{{ p.email }}">{{ p.email }}</a></li>
+        {% endfor %}
+      </ul>
+    </aside>
+  </div>
+</div>
+{% endblock %}

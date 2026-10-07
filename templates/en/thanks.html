@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Message sent{% endblock %}
+{% block main %}
+{{ m.page_head("We received your message", "Thank you for writing. We will reply by email or phone, usually within a few business days.") }}
+<div class="content">
+  <div class="wrap prose">
+    <p>If your matter is urgent, call the office at <a href="tel:{{ data.ORG.phone_href }}">{{ data.ORG.phone }}</a>.</p>
+    <p><a class="btn btn--ghost" href="{{ url('home', lang) }}">Back to the home page</a></p>
+  </div>
+</div>
+{% endblock %}

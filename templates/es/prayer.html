@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block title %}Peticiones de oración{% endblock %}
+{% block description %}Envíe su petición de oración a Excelencia en Administración Ministerial.{% endblock %}
+{% block main %}
+{{ m.page_head("Peticiones de oración", "Complete el formulario y le añadiremos a nuestra lista de peticiones.") }}
+<div class="content">
+  <div class="wrap contact-grid">
+    <form class="form" name="prayer" method="POST" action="{{ url('thanks', lang) }}" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="prayer">
+      <input type="hidden" name="idioma" value="es">
+      {{ m.honeypot() }}
+      <div class="field"><label for="p-name">Nombre <span class="hint">Puede usar solo su nombre de pila</span></label><input id="p-name" name="nombre" autocomplete="given-name" maxlength="120"></div>
+      <div class="field"><label for="p-email">Correo electrónico <span class="hint">Opcional, si desea que le escribamos</span></label><input id="p-email" name="email" type="email" autocomplete="email" maxlength="200"></div>
+      <div class="field"><label for="p-req">Su petición</label><textarea id="p-req" name="peticion" required maxlength="3000"></textarea></div>
+      <div class="field check"><input id="p-share" name="compartir" type="checkbox" value="si"><label for="p-share">Pueden compartir mi petición con el equipo de oración de EMM</label></div>
+      <button class="btn" type="submit">Enviar petición</button>
+    </form>
+    <aside class="aside">
+      <blockquote class="verse">
+        <p>«Yo te he invocado, por cuanto tú me oirás, oh Dios; inclina a mí tu oído, escucha mi palabra.»</p>
+        <footer>Salmo 17.6 (RVR1960)</footer>
+      </blockquote>
+    </aside>
+  </div>
+</div>
+{% endblock %}
